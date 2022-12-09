@@ -2,26 +2,47 @@ import React from "react";
 import UserInfoInput from "../common/UserInfoInput/UserInfoInput";
 import styles from "./Login.module.css";
 
-export default function Login({ userInfoForm }) {
+export default function Login({
+  logoInfo,
+  registrationInfo,
+  isLogin,
+  setIsLogin,
+}) {
+  const handleChange = () => {
+    setIsLogin(!isLogin);
+  };
+
   return (
     <div className={`${styles.form} ${styles.login}`}>
-      <span className={styles.title}>Login</span>
+      <p className={styles.title}>{isLogin ? "Login" : "Registration"}</p>
       <form action="">
-        <UserInfoInput userInfoForm={userInfoForm} />
-        {/* <div className={styles.input_field}>
-          <input type="text" placeholder="Enter your email" required />
-          <i className={`bx bx-envelope ${styles.icon}`}></i>
-        </div>
-        <div className={styles.input_field}>
-          <input
-            className={styles.password}
-            type="password"
-            placeholder="Enter your Password"
-            required
-          />
-          <i className={`bx bx-lock-alt ${styles.icon}`}></i>
-          <i className={`bx bx-hide ${styles.showHidePw}`}></i>
-        </div> */}
+        {isLogin
+          ? logoInfo.map(({ name, type, placeholder, children, icon }) => {
+              return (
+                <UserInfoInput
+                  key={name}
+                  name={name}
+                  type={type}
+                  placeholder={placeholder}
+                  icon={icon}
+                  children={children}
+                />
+              );
+            })
+          : registrationInfo.map(
+              ({ name, type, placeholder, children, icon }) => {
+                return (
+                  <UserInfoInput
+                    key={name}
+                    name={name}
+                    type={type}
+                    placeholder={placeholder}
+                    icon={icon}
+                    children={children}
+                  />
+                );
+              }
+            )} 
 
         <div className={styles.checkbox_text}>
           <div className={styles.checkbox_content}>
@@ -30,9 +51,7 @@ export default function Login({ userInfoForm }) {
               Remember me
             </label>
           </div>
-          <a href="#" className={styles.text}>
-            Forgot password?
-          </a>
+          <span className={styles.text}>Forgot password?</span>
         </div>
 
         <div className={`${styles.input_field} ${styles.button}`}>
@@ -41,12 +60,15 @@ export default function Login({ userInfoForm }) {
       </form>
 
       <div className={styles.login_signup}>
-        <span className={styles.text}>
+        <p className={styles.text}>
           Not a member?
-          <a href="" className={`${styles.text} ${styles.signup_text}`}>
+          <span
+            className={`${styles.text} ${styles.signup_text}`}
+            onClick={handleChange}
+          >
             Signup now
-          </a>
-        </span>
+          </span>
+        </p>
       </div>
     </div>
   );

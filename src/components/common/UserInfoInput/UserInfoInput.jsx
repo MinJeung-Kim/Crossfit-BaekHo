@@ -1,17 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./UserInfoInput.module.css";
 
-export default function UserInfoInput({ userInfoForm }) {
+export default function UserInfoInput({
+  name,
+  type,
+  placeholder,
+  icon,
+  children,
+}) {
+  const [isType, setIsType] = useState(false);
+  const handleChangeType = () => {
+    setIsType(!isType);
+  };
+
   return (
-    <>
-      {userInfoForm.map(({ name, type, placeholder, icon }) => {
-        return (
-          <div className={styles.input_field} key={name}>
-            <input name={name} type={type} placeholder={placeholder} required />
-            <i className={`bx ${icon} ${styles.icon}`}></i>
-          </div>
-        );
-      })}
-    </>
+    <div className={styles.input_field} key={name}>
+      <input
+        name={name}
+        type={isType ? "text" : type}
+        placeholder={placeholder}
+        required
+      />
+      {children ? (
+        children.map(({ icon }) => {
+          return icon === "bx-hide" ? (
+            <i
+              key={icon}
+              className={`bx ${isType ? "bx-show" : icon} ${styles.showHidePw}`}
+              onClick={handleChangeType}
+            ></i>
+          ) : (
+            <i key={icon} className={`bx ${icon} ${styles.icon}`}></i>
+          );
+        })
+      ) : icon === "bx-hide" ? (
+        <i
+          className={`bx ${isType ? "bx-show" : icon} ${styles.showHidePw}`}
+          onClick={handleChangeType}
+        ></i>
+      ) : (
+        <i className={`bx ${icon} ${styles.icon}`}></i>
+      )}
+    </div>
   );
 }

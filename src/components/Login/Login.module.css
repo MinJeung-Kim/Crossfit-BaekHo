@@ -6,6 +6,7 @@
   position: relative;
   font-size: 27px;
   font-weight: 600;
+  padding-bottom: 4px;
 }
 
 .title:before {
@@ -85,11 +86,12 @@
   font-size: 14px;
 }
 
-.form a.text {
+.form span.text {
+  padding-left: 0.5rem;
   color: #4070f4;
 }
 
-.form a:hover {
+.form span:hover {
   cursor: pointer;
   text-decoration: underline;
 }
@@ -119,5 +121,7 @@
   text-align: center;
 }
 
-.signup_text {
-}
+/* .signup_text {
+  padding-left: 0.5rem;
+  color: #265df2;
+} */

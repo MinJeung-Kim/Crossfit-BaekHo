@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Login from "../../components/Login/Login";
-import Registration from "../../components/Login/Registration";
 import styles from "./LoginForm.module.css";
 
-const userInfo = [
+const logoInfo = [
+  {
+    name: "email",
+    type: "text",
+    placeholder: "Enter your email",
+    icon: "bx-envelope",
+  },
+  {
+    name: "password",
+    type: "password",
+    placeholder: "Enter your Password",
+    children: [{ icon: "bx-lock-alt" }, { icon: "bx-hide" }],
+  },
+];
+
+const registrationInfo = [
   {
     name: "name",
     type: "text",
@@ -22,16 +36,26 @@ const userInfo = [
     placeholder: "Enter your Password",
     icon: "bx-lock-alt",
   },
-  // {   name: "rePassword", type: "text", icon: "bx-lock-alt" },
+  {
+    name: "repassword",
+    type: "password",
+    placeholder: "Enter your Password Check",
+    children: [{ icon: "bx-lock-alt" }, { icon: "bx-hide" }],
+  },
 ];
 
 export default function LoginForm() {
+  const [isLogin, setIsLogin] = useState(true);
   return (
     <div className={styles.Login}>
       <div className={styles.container}>
         <div className={styles.forms}>
-          <Login userInfoForm={userInfo} />
-          {/* <Registration userInfoForm={userInfo} /> */}
+          <Login
+            logoInfo={logoInfo}
+            registrationInfo={registrationInfo}
+            isLogin={isLogin}
+            setIsLogin={setIsLogin}
+          />
         </div>
       </div>
     </div>
