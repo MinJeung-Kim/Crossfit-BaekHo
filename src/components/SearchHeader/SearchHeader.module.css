@@ -1,0 +1,42 @@
+
+.home_section {
+    /* position: relative; */
+    background: #e4e9f7;
+    /* height: 100vh; */
+    left: 260px;
+    width: 100%;
+    margin-bottom: 1rem;
+    /* width: calc(100%-260px); */
+    transition: all 0.5s ease;
+  }
+  
+  .sidebar.close ~ .home_section {
+    left: 75px;
+    width: calc(100%-78px);
+  }
+  
+  .home_content {
+    height: 60px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .home_content i,
+  .text {
+    color: #11101d;
+    font-size: 35px;
+  }
+  
+  .home_content i {
+    margin: 0 15px;
+    cursor: pointer;
+  }
+  
+  .text {
+    font-size: 26px;
+    font-weight: 600;
+  }
+  
+  .search_form{
+    display: flex;
+  }
