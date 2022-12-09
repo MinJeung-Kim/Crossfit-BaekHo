@@ -5,6 +5,7 @@ import { YoutubeApiProvider } from "./context/YoutubeApiContext";
 import SearchHeader from "./components/SearchHeader/SearchHeader";
 import SideNavigationBar from "./components/SideNavigationBar/SideNavigationBar";
 import styles from "./App.module.css";
+import LoginForm from "./pages/LoginForm/LoginForm";
 
 const queryClient = new QueryClient();
 
@@ -12,7 +13,7 @@ function App() {
   const [isActive, setIsActive] = useState(false);
   return (
     <main className={styles.root}>
-      <SideNavigationBar isActive={isActive} />
+      {/* <SideNavigationBar isActive={isActive} />
 
       <section className={styles.container}>
         <SearchHeader isActive={isActive} setIsActive={setIsActive} />
@@ -21,7 +22,8 @@ function App() {
             <Outlet />
           </QueryClientProvider>
         </YoutubeApiProvider>
-      </section>
+      </section> */}
+      <LoginForm/>
     </main>
   );
 }
