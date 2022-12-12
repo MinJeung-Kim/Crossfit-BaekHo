@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useSearchParams } from "react-router-dom";
 import UserInfoInput from "../common/UserInfoInput/UserInfoInput";
 import styles from "./Login.module.css";
 
@@ -9,7 +8,6 @@ export default function Login({
   isLogin,
   setIsLogin,
 }) {
-
   const [inputs, setInputs] = useState({
     name: "",
     email: "",
@@ -19,6 +17,12 @@ export default function Login({
 
   const handleChangeStatus = () => {
     setIsLogin(!isLogin);
+    setInputs({
+      name: "",
+      email: "",
+      password: "",
+      repassword: "",
+    });
   };
 
   return (
@@ -26,7 +30,7 @@ export default function Login({
       <p className={styles.title}>{isLogin ? "Login" : "Registration"}</p>
       <form action="">
         {isLogin
-          ? logoInfo.map(({ name, type, placeholder, children, icon }) => {
+          ? logoInfo.map(({ name, type, placeholder, children, icon, error }) => {
               return (
                 <UserInfoInput
                   key={name}
@@ -34,6 +38,7 @@ export default function Login({
                   type={type}
                   placeholder={placeholder}
                   icon={icon}
+                  error={error}
                   children={children}
                   inputs={inputs}
                   setInputs={setInputs}
@@ -41,7 +46,7 @@ export default function Login({
               );
             })
           : registrationInfo.map(
-              ({ name, type, placeholder, children, icon }) => {
+              ({ name, type, placeholder, error, icon , children }) => {
                 return (
                   <UserInfoInput
                     key={name}
@@ -49,6 +54,7 @@ export default function Login({
                     type={type}
                     placeholder={placeholder}
                     icon={icon}
+                    error={error}
                     children={children}
                     inputs={inputs}
                     setInputs={setInputs}

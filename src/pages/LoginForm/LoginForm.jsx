@@ -8,6 +8,7 @@ const logoInfo = [
     type: "text",
     placeholder: "Enter your email",
     icon: "bx-envelope",
+    error: "Not a valid email",
   },
   {
     name: "password",
@@ -33,13 +34,14 @@ const registrationInfo = [
   {
     name: "password",
     type: "password",
-    placeholder: "Enter your Password",
+    placeholder: "Create a password",
     icon: "bx-lock-alt",
   },
   {
     name: "repassword",
     type: "password",
-    placeholder: "Enter your Password Check",
+    placeholder: "Confirm a password",
+    error: "Passwords does not match",
     children: [{ icon: "bx-lock-alt" }, { icon: "bx-hide" }],
   },
 ];
