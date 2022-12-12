@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import UserInfoInput from "../common/UserInfoInput/UserInfoInput";
 import styles from "./Login.module.css";
 
@@ -8,7 +9,15 @@ export default function Login({
   isLogin,
   setIsLogin,
 }) {
-  const handleChange = () => {
+
+  const [inputs, setInputs] = useState({
+    name: "",
+    email: "",
+    password: "",
+    repassword: "",
+  });
+
+  const handleChangeStatus = () => {
     setIsLogin(!isLogin);
   };
 
@@ -26,6 +35,8 @@ export default function Login({
                   placeholder={placeholder}
                   icon={icon}
                   children={children}
+                  inputs={inputs}
+                  setInputs={setInputs}
                 />
               );
             })
@@ -39,34 +50,38 @@ export default function Login({
                     placeholder={placeholder}
                     icon={icon}
                     children={children}
+                    inputs={inputs}
+                    setInputs={setInputs}
                   />
                 );
               }
-            )} 
+            )}
 
-        <div className={styles.checkbox_text}>
-          <div className={styles.checkbox_content}>
-            <input type="checkbox" id="logCheeck" />
-            <label className={styles.text} htmlFor="logCheck">
-              Remember me
-            </label>
+        {isLogin && (
+          <div className={styles.checkbox_text}>
+            <div className={styles.checkbox_content}>
+              <input type="checkbox" id="logCheeck" />
+              <label className={styles.text} htmlFor="logCheck">
+                Remember me
+              </label>
+            </div>
+            <span className={styles.text}>Forgot password?</span>
           </div>
-          <span className={styles.text}>Forgot password?</span>
-        </div>
+        )}
 
         <div className={`${styles.input_field} ${styles.button}`}>
-          <input type="button" value="Login Now" />
+          <input type="button" value={isLogin ? "Login Now" : "SignUp"} />
         </div>
       </form>
 
       <div className={styles.login_signup}>
         <p className={styles.text}>
-          Not a member?
+          {isLogin ? "Not a member?" : "Are you a member?"}
           <span
             className={`${styles.text} ${styles.signup_text}`}
-            onClick={handleChange}
+            onClick={handleChangeStatus}
           >
-            Signup now
+            {isLogin ? "Signup now" : "Signin"}
           </span>
         </p>
       </div>

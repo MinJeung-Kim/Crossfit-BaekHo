@@ -7,8 +7,13 @@ export default function UserInfoInput({
   placeholder,
   icon,
   children,
+  inputs,
+  setInputs,
 }) {
   const [isType, setIsType] = useState(false);
+
+//   const { name, email, password, repassword } = inputs;
+
   const handleChangeType = () => {
     setIsType(!isType);
   };
