@@ -1,0 +1,6 @@
+export const socialMedia = [
+    { name: "git", icon: "bx-git-branch" },
+    { name: "kakao", icon: "bxs-message-rounded" },
+    { name: "facebook", icon: "bxl-facebook" },
+    { name: "google", icon: "bxl-google" },
+  ];

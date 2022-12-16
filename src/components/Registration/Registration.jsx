@@ -55,6 +55,7 @@ export default function Registration({ isLogin, setIsLogin }) {
           error={"Passwords does not match"}
           inputs={inputs}
           setInputs={setInputs}
+          autoComplete={"off"}
         />
 
         <div className={`${styles.input_field} ${styles.button}`}>

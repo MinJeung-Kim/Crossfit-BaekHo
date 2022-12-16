@@ -5,9 +5,10 @@ export default function UserInfoInput({
   name,
   type,
   placeholder,
+  autoComplete,
   icon,
   hideIcon,
-  error, 
+  error,
   inputs,
   setInputs,
 }) {
@@ -38,7 +39,7 @@ export default function UserInfoInput({
   };
 
   const chooseIcon = () => {
-    if (hideIcon ) {
+    if (hideIcon) {
       return (
         <>
           <i
@@ -62,7 +63,8 @@ export default function UserInfoInput({
           onChange={handleChange}
           type={isType ? "text" : type}
           placeholder={placeholder}
-          required
+          autoComplete={autoComplete}
+          required 
         />
         {hideIcon ? (
           chooseIcon()

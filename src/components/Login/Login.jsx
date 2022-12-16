@@ -1,14 +1,8 @@
 import React, { useState } from "react";
+import { socialMedia } from "../../util/socialMedia";
 import UserInfoInput from "../common/UserInfoInput/UserInfoInput"; 
 import styles from "./Login.module.css";
-
-const socialMedia = [
-  { name: "git", icon: "bx-git-branch" },
-  { name: "kakao", icon: "bxs-message-rounded" },
-  { name: "facebook", icon: "bxl-facebook" },
-  { name: "google", icon: "bxl-google" },
-];
-
+ 
 export default function Login({ isLogin, setIsLogin }) { 
   const [inputs, setInputs] = useState({
     email: "",
@@ -42,6 +36,7 @@ export default function Login({ isLogin, setIsLogin }) {
           error={""}
           inputs={inputs}
           setInputs={setInputs}
+          autoComplete={"off"}
         />
 
         <div className={styles.checkbox_text}>
@@ -79,8 +74,7 @@ export default function Login({ isLogin, setIsLogin }) {
           return (
             <div
               className={`${styles.field} ${styles.git}`}
-              key={name}
-              // onClick={login}
+              key={name} 
             >
               <i className={`bx ${icon} ${styles.git_icon}`}></i>
               <span className={styles.tooltip}>{name}</span>
