@@ -13,8 +13,8 @@ function App() {
   const [isActive, setIsActive] = useState(false);
   return (
     <main className={styles.root}>
-      {/* <SideNavigationBar isActive={isActive} />
-
+      <LoginForm />
+      <SideNavigationBar isActive={isActive} /> 
       <section className={styles.container}>
         <SearchHeader isActive={isActive} setIsActive={setIsActive} />
         <YoutubeApiProvider>
@@ -22,8 +22,7 @@ function App() {
             <Outlet />
           </QueryClientProvider>
         </YoutubeApiProvider>
-      </section> */}
-      <LoginForm/>
+      </section>
     </main>
   );
 }

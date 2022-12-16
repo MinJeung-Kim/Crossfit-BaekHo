@@ -58,7 +58,6 @@ export default function SideNavigationBar({ isActive }) {
           <i className="bx bxl-c-plus-plus"></i>
           <span className={styles.logo_name}>CodingLab</span>
         </div>
-
         <ul className={styles.nav_links}>
           {menus.map(({ id, name, url, icon, children }) => {
             return children ? (
@@ -98,20 +97,20 @@ export default function SideNavigationBar({ isActive }) {
                 </ul>
               </li>
             );
-          })} 
-            <div className={styles.profile_details}>
-              <div className={styles.profile_content}>
-                <img src="images/profile.png" alt="profile" />
-              </div>
+          })}
+        </ul> 
+        <div className={styles.profile_details}>
+          <div className={styles.profile_content}>
+            <img src="images/profile.png" alt="profile" />
+          </div>
 
-              <div className={styles.name_job}>
-                <div className={styles.profile_name}>Prem shahi</div>
-                <div className={styles.job}>Web Design</div>
-              </div>
-              <i className="bx bx-log-out"></i>
-            </div> 
-        </ul>
-      </nav> 
+          <div className={styles.name_job}>
+            <div className={styles.profile_name}>Prem shahi</div>
+            <div className={styles.job}>Web Design</div>
+          </div>
+          <i className="bx bx-log-out"></i>
+        </div>
+      </nav>
     </>
   );
 }
