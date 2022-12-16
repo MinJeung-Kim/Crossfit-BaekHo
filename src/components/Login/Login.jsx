@@ -1,95 +1,92 @@
 import React, { useState } from "react";
-import UserInfoInput from "../common/UserInfoInput/UserInfoInput";
+import UserInfoInput from "../common/UserInfoInput/UserInfoInput"; 
 import styles from "./Login.module.css";
 
-export default function Login({
-  logoInfo,
-  registrationInfo,
-  isLogin,
-  setIsLogin,
-}) {
+const socialMedia = [
+  { name: "git", icon: "bx-git-branch" },
+  { name: "kakao", icon: "bxs-message-rounded" },
+  { name: "facebook", icon: "bxl-facebook" },
+  { name: "google", icon: "bxl-google" },
+];
+
+export default function Login({ isLogin, setIsLogin }) { 
   const [inputs, setInputs] = useState({
-    name: "",
     email: "",
     password: "",
-    repassword: "",
   });
 
   const handleChangeStatus = () => {
     setIsLogin(!isLogin);
-    setInputs({
-      name: "",
-      email: "",
-      password: "",
-      repassword: "",
-    });
   };
 
   return (
     <div className={`${styles.form} ${styles.login}`}>
-      <p className={styles.title}>{isLogin ? "Login" : "Registration"}</p>
+      <p className={styles.title}> Login </p>
       <form action="">
-        {isLogin
-          ? logoInfo.map(({ name, type, placeholder, children, icon, error }) => {
-              return (
-                <UserInfoInput
-                  key={name}
-                  name={name}
-                  type={type}
-                  placeholder={placeholder}
-                  icon={icon}
-                  error={error}
-                  children={children}
-                  inputs={inputs}
-                  setInputs={setInputs}
-                />
-              );
-            })
-          : registrationInfo.map(
-              ({ name, type, placeholder, error, icon , children }) => {
-                return (
-                  <UserInfoInput
-                    key={name}
-                    name={name}
-                    type={type}
-                    placeholder={placeholder}
-                    icon={icon}
-                    error={error}
-                    children={children}
-                    inputs={inputs}
-                    setInputs={setInputs}
-                  />
-                );
-              }
-            )}
+        <UserInfoInput
+          name={"email"}
+          type={"text"}
+          placeholder={"Enter your email"}
+          icon={"bx-envelope"}
+          error={""}
+          inputs={inputs}
+          setInputs={setInputs}
+        />
 
-        {isLogin && (
-          <div className={styles.checkbox_text}>
-            <div className={styles.checkbox_content}>
-              <input type="checkbox" id="logCheeck" />
-              <label className={styles.text} htmlFor="logCheck">
-                Remember me
-              </label>
-            </div>
-            <span className={styles.text}>Forgot password?</span>
+        <UserInfoInput
+          name={"password"}
+          type={"password"}
+          placeholder={"Enter your Password"}
+          icon={"bx-lock-alt"}
+          hideIcon={"bx-hide"}
+          error={""}
+          inputs={inputs}
+          setInputs={setInputs}
+        />
+
+        <div className={styles.checkbox_text}>
+          <div className={styles.checkbox_content}>
+            <input type="checkbox" id="logCheeck" />
+            <label className={styles.text} htmlFor="logCheck">
+              Remember me
+            </label>
           </div>
-        )}
+          <button type="button" className={styles.text}>
+            Forgot password?
+          </button>
+        </div>
 
         <div className={`${styles.input_field} ${styles.button}`}>
-          <input type="button" value={isLogin ? "Login Now" : "SignUp"} />
+          <input type="button" value={"Login Now"} />
         </div>
       </form>
 
       <div className={styles.login_signup}>
         <p className={styles.text}>
-          {isLogin ? "Not a member?" : "Are you a member?"}
-          <span
+          Not a member?
+          <button
+            type="reset"
             className={`${styles.text} ${styles.signup_text}`}
             onClick={handleChangeStatus}
           >
-            {isLogin ? "Signup now" : "Signin"}
-          </span>
+            Signup now
+          </button>
         </p>
+      </div>
+      <div className={styles.line}></div>
+      <div className={styles.media_options}>
+        {socialMedia.map(({ name, icon }) => {
+          return (
+            <div
+              className={`${styles.field} ${styles.git}`}
+              key={name}
+              // onClick={login}
+            >
+              <i className={`bx ${icon} ${styles.git_icon}`}></i>
+              <span className={styles.tooltip}>{name}</span>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

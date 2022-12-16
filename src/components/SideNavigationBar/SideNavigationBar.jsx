@@ -1,15 +1,15 @@
-import { useState } from "react";
+import { useState } from "react"; 
 import { Link } from "react-router-dom"; 
-import { menus } from "../../util/sideNavMenu";
+import { menus } from "../../util/sideNavMenu"; 
 import styles from "./SideNavigationBar.module.css";
-
-
+ 
 export default function SideNavigationBar({ isActive }) { 
   const [arrow, setArrow] = useState({});
+
   const handleToggle = (id) => {
     // console.log({ ...arrow, [id]: !arrow[id] });
     setArrow({ ...arrow, [id]: !arrow[id] });
-  };
+  };  
  
   return (
     <>
@@ -57,7 +57,7 @@ export default function SideNavigationBar({ isActive }) {
                 </ul>
               </li>
             );
-          })}
+          })} 
         </ul>
         <div className={styles.profile_details}>
           <div className={styles.profile_content}>
@@ -69,7 +69,7 @@ export default function SideNavigationBar({ isActive }) {
             <div className={styles.job}>Web Design</div>
           </div>
           <i className="bx bx-log-out"></i>
-        </div>
+        </div> 
       </nav>
     </>
   );

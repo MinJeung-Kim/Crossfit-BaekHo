@@ -14,7 +14,7 @@ function App() {
   return (
     <main className={styles.root}>
       <LoginForm />
-      <SideNavigationBar isActive={isActive} /> 
+      <SideNavigationBar isActive={isActive} />
       <section className={styles.container}>
         <SearchHeader isActive={isActive} setIsActive={setIsActive} />
         <YoutubeApiProvider>

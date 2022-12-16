@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./UserInfoInput.module.css";
 
 export default function UserInfoInput({
@@ -6,15 +6,13 @@ export default function UserInfoInput({
   type,
   placeholder,
   icon,
-  error,
-  children,
+  hideIcon,
+  error, 
   inputs,
   setInputs,
 }) {
   const [isType, setIsType] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
-
- 
 
   const handleErrorCheck = (email) => {
     var reg =
@@ -39,6 +37,22 @@ export default function UserInfoInput({
     setIsType(!isType);
   };
 
+  const chooseIcon = () => {
+    if (hideIcon ) {
+      return (
+        <>
+          <i
+            className={`bx ${isType ? "bx-show" : hideIcon} ${
+              styles.showHidePw
+            }`}
+            onClick={handleChangeType}
+          ></i>
+          <i className={`bx ${icon} ${styles.icon}`}></i>
+        </>
+      );
+    }
+  };
+
   return (
     <>
       <div className={styles.input_field} key={name}>
@@ -50,25 +64,8 @@ export default function UserInfoInput({
           placeholder={placeholder}
           required
         />
-        {children ? (
-          children.map(({ icon }) => {
-            return icon === "bx-hide" ? (
-              <i
-                key={icon}
-                className={`bx ${isType ? "bx-show" : icon} ${
-                  styles.showHidePw
-                }`}
-                onClick={handleChangeType}
-              ></i>
-            ) : (
-              <i key={icon} className={`bx ${icon} ${styles.icon}`}></i>
-            );
-          })
-        ) : icon === "bx-hide" ? (
-          <i
-            className={`bx ${isType ? "bx-show" : icon} ${styles.showHidePw}`}
-            onClick={handleChangeType}
-          ></i>
+        {hideIcon ? (
+          chooseIcon()
         ) : (
           <i className={`bx ${icon} ${styles.icon}`}></i>
         )}

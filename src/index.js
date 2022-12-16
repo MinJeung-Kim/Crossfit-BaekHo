@@ -1,32 +1,43 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import './styles/App.global.css'
-import App from './App';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import reportWebVitals from './reportWebVitals';
-import NotFound from './pages/NotFound';
-import Dashboard from './pages/Dashboard';
-import Videos from './pages/Videos';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import "./styles/App.global.css";
+import App from "./App";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import reportWebVitals from "./reportWebVitals";
+import NotFound from "./pages/NotFound";
+import Dashboard from "./pages/Dashboard";
+import Videos from "./pages/Videos";
+import LoginForm from "./pages/LoginForm/LoginForm"; 
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/login",
+    element: <LoginForm />,
+    errorElement: <NotFound />,
+  },
+  {
+    path: "/",
     element: <App />,
     errorElement: <NotFound />,
     children: [
-      { index: true, element: <Dashboard /> },
+      {
+        index: true,
+        element: ( 
+            <Dashboard /> 
+        ),
+      },
       { path: "/videos", element: <Videos /> },
       { path: "/videos/:keyword", element: <Videos /> },
     ],
   },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-  <RouterProvider router={router} />
-</React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
