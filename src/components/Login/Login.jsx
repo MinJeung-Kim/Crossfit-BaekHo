@@ -1,13 +1,38 @@
-import React, { useState } from "react";
+import React, { useContext  } from "react";
+import { useSetState } from "react-use";
+import { AuthContext } from "../../context/AuthContext";
 import { socialMedia } from "../../util/socialMedia";
 import UserInfoInput from "../common/UserInfoInput/UserInfoInput"; 
 import styles from "./Login.module.css";
  
+const initialState = {
+  email: '',
+  password: ''
+}
 export default function Login({ isLogin, setIsLogin }) { 
-  const [inputs, setInputs] = useState({
-    email: "",
-    password: "",
-  });
+  
+  // const [inputs, setInputs] = useState({
+  //   email: "",
+  //   password: "",
+  // });
+
+  const { state: ContextState, login } = useContext(AuthContext);
+  // const {
+  //   isLoginPending,
+  //   isLoggedIn,
+  //   loginError
+  // } = ContextState;
+  const [state, setState] = useSetState(initialState);
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); 
+    const { email, password } = state;
+    login(email, password);
+    setState({
+      email: '',
+      password: ''
+    });
+  }
 
   const handleChangeStatus = () => {
     setIsLogin(!isLogin);
@@ -16,15 +41,15 @@ export default function Login({ isLogin, setIsLogin }) {
   return (
     <div className={`${styles.form} ${styles.login}`}>
       <p className={styles.title}> Login </p>
-      <form action="">
+      <form action=""  onSubmit={handleSubmit}>
         <UserInfoInput
           name={"email"}
           type={"text"}
           placeholder={"Enter your email"}
           icon={"bx-envelope"}
           error={""}
-          inputs={inputs}
-          setInputs={setInputs}
+          inputs={state}
+          setInputs={setState}
         />
 
         <UserInfoInput
@@ -34,8 +59,8 @@ export default function Login({ isLogin, setIsLogin }) {
           icon={"bx-lock-alt"}
           hideIcon={"bx-hide"}
           error={""}
-          inputs={inputs}
-          setInputs={setInputs}
+          inputs={state}
+          setInputs={setState}
           autoComplete={"off"}
         />
 
@@ -52,7 +77,7 @@ export default function Login({ isLogin, setIsLogin }) {
         </div>
 
         <div className={`${styles.input_field} ${styles.button}`}>
-          <input type="button" value={"Login Now"} />
+          <input type="submit" value={"Login Now"}  />
         </div>
       </form>
 

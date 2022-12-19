@@ -1,16 +1,23 @@
-import { useState } from "react"; 
-import { Link } from "react-router-dom"; 
-import { menus } from "../../util/sideNavMenu"; 
+import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import { menus } from "../../util/sideNavMenu";
 import styles from "./SideNavigationBar.module.css";
- 
-export default function SideNavigationBar({ isActive }) { 
+
+export default function SideNavigationBar({ isActive }) {
+  const { logout } = useContext(AuthContext);
   const [arrow, setArrow] = useState({});
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    logout();
+  };
 
   const handleToggle = (id) => {
     // console.log({ ...arrow, [id]: !arrow[id] });
     setArrow({ ...arrow, [id]: !arrow[id] });
-  };  
- 
+  };
+
   return (
     <>
       <nav className={`${styles.sidebar}  ${isActive ? styles.close : ""}`}>
@@ -57,7 +64,7 @@ export default function SideNavigationBar({ isActive }) {
                 </ul>
               </li>
             );
-          })} 
+          })}
         </ul>
         <div className={styles.profile_details}>
           <div className={styles.profile_content}>
@@ -68,8 +75,8 @@ export default function SideNavigationBar({ isActive }) {
             <div className={styles.profile_name}>Prem shahi</div>
             <div className={styles.job}>Web Design</div>
           </div>
-          <i className="bx bx-log-out"></i>
-        </div> 
+          <i className="bx bx-log-out" onClick={handleLogout}></i>
+        </div>
       </nav>
     </>
   );

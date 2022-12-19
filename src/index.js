@@ -8,7 +8,8 @@ import reportWebVitals from "./reportWebVitals";
 import NotFound from "./pages/NotFound";
 import Dashboard from "./pages/Dashboard";
 import Videos from "./pages/Videos";
-import LoginForm from "./pages/LoginForm/LoginForm"; 
+import LoginForm from "./pages/LoginForm/LoginForm";
+import { ContextProvider } from "./context/AuthContext";
 
 const router = createBrowserRouter([
   {
@@ -23,9 +24,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: ( 
-            <Dashboard /> 
-        ),
+        element: <Dashboard />,
       },
       { path: "/videos", element: <Videos /> },
       { path: "/videos/:keyword", element: <Videos /> },
@@ -36,7 +35,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ContextProvider value={500}>
+      <RouterProvider router={router} />
+    </ContextProvider>
   </React.StrictMode>
 );
 
