@@ -6,7 +6,7 @@ import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import NotFound from "./pages/NotFound";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard/Dashboard";
 import Videos from "./pages/Videos";
 import LoginForm from "./pages/LoginForm/LoginForm";
 import { ContextProvider } from "./context/AuthContext";
