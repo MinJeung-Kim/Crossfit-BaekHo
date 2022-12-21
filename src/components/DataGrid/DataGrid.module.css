@@ -1,15 +1,10 @@
-
-.title {
-    font-size: 24px;
-    font-weight: 500;
-  }
-  
+/* 
   .sales_boxes {
     display: flex;
     justify-content: space-between;
     padding: 20px;
   }
-  
+   
   .box {
     margin-bottom: 20px;
     width: 100%;
@@ -34,6 +29,11 @@
     padding: 20px;
   }
   
+.title {
+    font-size: 24px;
+    font-weight: 500;
+  }
+
   .sales_details {
     display: flex;
     justify-content: space-between;
@@ -122,4 +122,254 @@
       width: 590px;
     }
   }
-  
+   */
+
+/* ============================================================== */
+
+/* 
+.records {
+  box-shadow: 0 5px 5px -5px rgb(0, 0, 0 / 10%);
+  background: #fff;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column; 
+  padding: 20px;
+}
+
+.record_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.add,
+.browse {
+  display: flex;
+  align-items: center;
+}
+
+.add span {
+  display: inline-block;
+  margin-right: 0.6rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.add select,
+.browse input,
+.browse select {
+  display: inline-block;
+  width: 65px;
+  height: 40px;
+  border: 1px solid #b0b0b0;
+  border-radius: 3px;
+  padding: 0 0.5rem;
+  margin-right: 0.8rem;
+  color: #666;
+}
+
+.add button {
+  background: #666;
+  color: #fff;
+  height: 37px;
+  border-radius: 4px;
+  padding: 0 1rem;
+  font-weight: 600;
+}
+
+.browse input {
+  width: 150px;
+}
+
+.browse select {
+  width: 100px;
+}
+
+.record_search {
+}
+
+.table_responsive {
+  width: 100%;
+  overflow: auto;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table thead tr {
+  background: #e9edf2;
+}
+
+table thead th {
+  padding: 1rem 0;
+  text-align: left;
+  color: #444;
+  font-size: 0.9rem;
+}
+
+table thead th:first-child {
+  padding-left: 1rem;
+}
+
+table tbody td {
+  padding: 1rem 0;
+  color: #444;
+}
+
+table tbody td:first-child {
+  padding-left: 1rem;
+  color: #444;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+table tbody tr {
+  border-bottom: 1px solid #dee2e8;
+}
+
+.client {
+  display: flex;
+  align-items: center;
+}
+
+.bg_img {
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+}
+
+.client_img {
+  background-image: url("../../../public/images/profile.png");
+  margin-right: 0.5rem;
+  border: 2px solid #b0b0b0;
+  height: 45px;
+  width: 45px;
+  background-position: center;
+}
+
+.client_info h4 {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.client_info small {
+  color: #777;
+}
+
+.actions span {
+  display: inline-block;
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.paid {
+  display: inline-block;
+  text-align: center;
+  font-weight: 600;
+  color: aquamarine;
+  background: #e5f8ed;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+@media only scree and (max-width: 1200px) {
+} */
+
+.dataGrid {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+}
+
+table {
+  position: relative;
+  overflow: auto;
+  display: grid;
+  width: 100%;
+  border-collapse: collapse;
+  grid-template-columns:
+    minmax(150px, 1fr)
+    minmax(150px, 1.67fr)
+    minmax(150px, 1.67fr)
+    minmax(150px, 1.67fr)
+    minmax(150px, 3.33fr)
+    minmax(150px, 1.67fr)
+    minmax(150px, 3.33fr)
+    minmax(150px, 1.67fr);
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px -5px rgb(0 0 0 / 10%);
+}
+
+table::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+  background-color: #aaa;
+}
+
+table::-webkit-scrollbar-thumb {
+  background: #5c5b5f;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px -5px rgb(0 0 0 / 10%);
+}
+
+thead,
+tbody,
+tr {
+  display: contents;
+}
+
+th,
+td {
+  padding: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+th {
+  position: sticky;
+  top: 0;
+  background: #6c7ae0;
+  text-align: left;
+  font-weight: normal;
+  font-size: 1.1rem;
+  color: white;
+}
+
+th:last-child {
+  border: 0;
+}
+
+.resize_handle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: black;
+  opacity: 0;
+  width: 3px;
+  cursor: col-resize;
+}
+
+.resize_handle:hover, 
+.header--being-resized .resize_handle {
+  opacity: 0.5;
+}
+
+th:hover .resize_handle {
+  opacity: 0.3;
+}
+
+td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #808080;
+}
+
+tr:nth-child(even) td {
+  background: #f8f6ff;
+}
