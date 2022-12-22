@@ -2,14 +2,14 @@ import { useState } from "react";
 import styles from "./DataGrid.module.css";
 
 const title = [
-  { id: 0, title: "ID" },
-  { id: 1, title: "First name" },
-  { id: 2, title: "Last name" },
-  { id: 3, title: "Email" },
-  { id: 4, title: "Street" },
-  { id: 5, title: "Country" },
-  { id: 6, title: "University" },
-  { id: 7, title: "IBAN" },
+  "ID",
+  "First name",
+  "Last name",
+  "Email",
+  "Street",
+  "Country",
+  "University",
+  "IBAN",
 ];
 
 const data = [
@@ -99,10 +99,10 @@ export default function DataGrid() {
               />
             </th>
 
-            {title.map(({ title, id }) => {
+            {title.map((title) => {
               return (
                 <>
-                  <th key={id}>
+                  <th key={title}>
                     {title} <span className={styles.resize_handle}></span>
                   </th>
                 </>
