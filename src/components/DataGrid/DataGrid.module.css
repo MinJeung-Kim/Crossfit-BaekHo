@@ -1,283 +1,3 @@
-/* 
-  .sales_boxes {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-  }
-   
-  .box {
-    margin-bottom: 20px;
-    width: 100%;
-    overflow: auto;
-  }
-  
-  .box::-webkit-scrollbar {
-    width: 10px;
-    height: 8px;
-    background-color: #aaa;
-  }
-  
-  .box::-webkit-scrollbar-thumb {
-    background: #11101d;
-  }
-  
-  .recent_sale {
-    width: 65%;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-  }
-  
-.title {
-    font-size: 24px;
-    font-weight: 500;
-  }
-
-  .sales_details {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .topic {
-    font-size: 20px;
-    font-weight: 500;
-  }
-  
-  .details li {
-    margin: 8px 0;
-  }
-  
-  .details li a {
-    color: #333;
-    font-size: 18px;
-    font-weight: 400;
-  }
-  
-  .top_sale {
-    width: 35%;
-    margin-left: 20px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-  }
-  
-  .top_sale li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .top_sale li a {
-    display: flex;
-    align-items: center;
-  }
-  .top_sale img {
-    margin-right: 6px;
-    height: 40px;
-    width: 40px;
-    border-radius: 4px;
-    object-fit: cover;
-  }
-  
-  .button {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .button a {
-    font-size: 15px;
-    font-weight: 400;
-    color: #fff;
-    background: #0a2558;
-    padding: 4px 12px;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-  }
-  
-  .button a:hover {
-    background: #0d3073;
-  }
-  
-  @media (max-width: 1078px) {
-    .sales_boxes {
-      flex-direction: column;
-    }
-  
-    .box {
-      width: 100%;
-      margin-bottom: 20px;
-    }
-  
-    .top_sale {
-      margin-left: 0;
-    }
-  }
-  
-  @media (max-width: 658px) {
-    .sales_details {
-      width: 590px;
-    }
-  }
-   */
-
-/* ============================================================== */
-
-/* 
-.records {
-  box-shadow: 0 5px 5px -5px rgb(0, 0, 0 / 10%);
-  background: #fff;
-  border-radius: 3px;
-  display: flex;
-  flex-direction: column; 
-  padding: 20px;
-}
-
-.record_header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-}
-
-.add,
-.browse {
-  display: flex;
-  align-items: center;
-}
-
-.add span {
-  display: inline-block;
-  margin-right: 0.6rem;
-  font-size: 0.9rem;
-  color: #666;
-}
-
-.add select,
-.browse input,
-.browse select {
-  display: inline-block;
-  width: 65px;
-  height: 40px;
-  border: 1px solid #b0b0b0;
-  border-radius: 3px;
-  padding: 0 0.5rem;
-  margin-right: 0.8rem;
-  color: #666;
-}
-
-.add button {
-  background: #666;
-  color: #fff;
-  height: 37px;
-  border-radius: 4px;
-  padding: 0 1rem;
-  font-weight: 600;
-}
-
-.browse input {
-  width: 150px;
-}
-
-.browse select {
-  width: 100px;
-}
-
-.record_search {
-}
-
-.table_responsive {
-  width: 100%;
-  overflow: auto;
-}
-
-table {
-  border-collapse: collapse;
-}
-
-table thead tr {
-  background: #e9edf2;
-}
-
-table thead th {
-  padding: 1rem 0;
-  text-align: left;
-  color: #444;
-  font-size: 0.9rem;
-}
-
-table thead th:first-child {
-  padding-left: 1rem;
-}
-
-table tbody td {
-  padding: 1rem 0;
-  color: #444;
-}
-
-table tbody td:first-child {
-  padding-left: 1rem;
-  color: #444;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-table tbody tr {
-  border-bottom: 1px solid #dee2e8;
-}
-
-.client {
-  display: flex;
-  align-items: center;
-}
-
-.bg_img {
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 50%;
-}
-
-.client_img {
-  background-image: url("../../../public/images/profile.png");
-  margin-right: 0.5rem;
-  border: 2px solid #b0b0b0;
-  height: 45px;
-  width: 45px;
-  background-position: center;
-}
-
-.client_info h4 {
-  color: #555;
-  font-size: 0.95rem;
-}
-
-.client_info small {
-  color: #777;
-}
-
-.actions span {
-  display: inline-block;
-  font-size: 1.5rem;
-  margin-right: 0.5rem;
-}
-
-.paid {
-  display: inline-block;
-  text-align: center;
-  font-weight: 600;
-  color: aquamarine;
-  background: #e5f8ed;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-}
-
-@media only scree and (max-width: 1200px) {
-} */
-
 .dataGrid {
   position: relative;
   width: 100%;
@@ -291,7 +11,8 @@ table {
   width: 100%;
   border-collapse: collapse;
   grid-template-columns:
-    minmax(150px, 1fr)
+    minmax(30px, 1fr)
+    minmax(100px, 1fr)
     minmax(150px, 1.67fr)
     minmax(150px, 1.67fr)
     minmax(150px, 1.67fr)
@@ -322,12 +43,21 @@ tr {
   display: contents;
 }
 
+tr:nth-child(even) td {
+  background: var(--color-bg);
+}
+
 th,
 td {
   padding: 15px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+th:first-child,
+td:first-child {
+  text-overflow: clip;
 }
 
 th {
@@ -337,7 +67,7 @@ th {
   text-align: left;
   font-weight: normal;
   font-size: 1.1rem;
-  color: white;
+  color: var(--color-dark-text);
 }
 
 th:last-child {
@@ -349,13 +79,13 @@ th:last-child {
   top: 0;
   right: 0;
   bottom: 0;
-  background: black;
+  background: var(--color-bg-dark);
   opacity: 0;
   width: 3px;
   cursor: col-resize;
 }
 
-.resize_handle:hover, 
+.resize_handle:hover,
 .header--being-resized .resize_handle {
   opacity: 0.5;
 }
@@ -370,6 +100,36 @@ td {
   color: #808080;
 }
 
-tr:nth-child(even) td {
-  background: #f8f6ff;
+.visuallyhidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+.table_data {
+  border: none;
+  border-bottom: 2px solid #f9f9fa;
+  position: relative;
+  padding-top: 10px;
+  /* padding-left: 50%;  */
+}
+
+input[type="checkbox"] {
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 3px;
+  border: 1px solid #999;
+  /* appearance: none; */
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+input[type="checkbox"]:checked {
+  background: #6c7ae0;
+  border: none;
 }

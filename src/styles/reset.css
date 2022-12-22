@@ -92,7 +92,8 @@ video {
   font-size: 100%;
   font: inherit;
   font-family: "NanumBarunGothicExtraLight", "NanumBarunGothicLight",
-    "NanumBarunGothic", "NanumBarunGothicBold";
+    "NanumBarunGothic", "NanumBarunGothicBold" "poppins_400", "poppins_500",
+    "poppins_600", "poppins_700";
   vertical-align: baseline;
   cursor: default;
 }

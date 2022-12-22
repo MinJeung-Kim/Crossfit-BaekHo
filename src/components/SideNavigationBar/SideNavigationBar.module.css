@@ -1,11 +1,8 @@
-.sidebar {
-  /* position: fixed;
-  top: 0;
-  left: 0; */
+.sidebar { 
   position: relative;
   height: 100%;
   width: 260px;
-  background: #11101d;
+  background: var(--color-bg-dark);
   z-index: 100;
   transition: all 0.5s ease;
 }
@@ -23,7 +20,7 @@
 
 .logo_details i {
   font-size: 30px;
-  color: #fff;
+  color: var(--color-dark-text);
   height: 50px;
   min-width: 78px;
   text-align: center;
@@ -32,7 +29,7 @@
 
 .logo_name {
   font-size: 22px;
-  color: #fff;
+  color: var(--color-dark-text);
   font-weight: 600;
   transition: 0.3s ease;
   transition-delay: 0.1s;
@@ -87,7 +84,7 @@
   min-width: 78px;
   text-align: center;
   line-height: 50px;
-  color: #fff;
+  color: var(--color-dark-text);
   font-size: 20px;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -110,7 +107,7 @@
 .link_name {
   font-size: 18px;
   font-weight: 400;
-  color: #fff;
+  color: var(--color-dark-text);
 }
 
 .sidebar.close .link_name {
@@ -130,7 +127,7 @@
 }
 
 .sub_menu a {
-  color: #fff;
+  color: var(--color-dark-text);
   font-size: 15px;
   padding: 5px 0;
   white-space: nowrap;
@@ -237,7 +234,7 @@
 
 .profile_name,
 .job {
-  color: #fff;
+  color: var(--color-dark-text);
   font-size: 18px;
   font-weight: 500;
   white-space: nowrap;

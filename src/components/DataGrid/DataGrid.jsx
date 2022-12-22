@@ -1,30 +1,20 @@
-import React from "react";
+import { useState } from "react";
 import styles from "./DataGrid.module.css";
 
 const title = [
-  "ID",
-  "First name",
-  "Last name",
-  "Email",
-  "Street",
-  "Country",
-  "University",
-  "IBAN",
+  { id: 0, title: "ID" },
+  { id: 1, title: "First name" },
+  { id: 2, title: "Last name" },
+  { id: 3, title: "Email" },
+  { id: 4, title: "Street" },
+  { id: 5, title: "Country" },
+  { id: 6, title: "University" },
+  { id: 7, title: "IBAN" },
 ];
 
-const content = [
+const data = [
   {
-    id: "000001",
-    First_name: "Lani",
-    Last_name: "Ovendale",
-    Email: "lovendale0@w3.org",
-    Street: "7850 Old Shore Drive",
-    Country: "United Kingdom",
-    University: "University of Plymouth",
-    IBAN: "BG34 MPVP 8782 88EX H1CJ SC",
-  },
-  {
-    id: "000002",
+    id: 1,
     First_name: "Israel",
     Last_name: "Tassell",
     Email: "itassell1@ow.ly",
@@ -34,7 +24,7 @@ const content = [
     IBAN: "FR11 4824 2942 41H9 XBHC 46P2 O86",
   },
   {
-    id: "000003",
+    id: 2,
     First_name: "Eveleen",
     Last_name: "Mercer",
     Email: "emercer2@ow.ly",
@@ -44,7 +34,7 @@ const content = [
     IBAN: "GR96 7559 456P GUAN WTAJ 3VPB S0P",
   },
   {
-    id: "000004",
+    id: 3,
     First_name: "Conn",
     Last_name: "Whitley",
     Email: "cwhitley3@wsj.com",
@@ -54,7 +44,7 @@ const content = [
     IBAN: "LI59 1813 2T7T VKTO 6RKE X",
   },
   {
-    id: "000005",
+    id: 4,
     First_name: "Cherye",
     Last_name: "Smitheram",
     Email: "csmitheram4@rambler.ru",
@@ -63,72 +53,65 @@ const content = [
     University: "Universitas Mahasaraswati Denpasar",
     IBAN: "BR27 4570 4226 4255 5239 0197 316T J",
   },
+  {
+    id: 5,
+    First_name: "Lani",
+    Last_name: "Ovendale",
+    Email: "lovendale0@w3.org",
+    Street: "7850 Old Shore Drive",
+    Country: "United Kingdom",
+    University: "University of Plymouth",
+    IBAN: "BG34 MPVP 8782 88EX H1CJ SC",
+  },
 ];
 
 export default function DataGrid() {
-  const table = document.querySelector("table");
-  let headerBeingResized;
-  const columns = [];
-  const min = 150;
+  const [checkItems, setCheckItems] = useState([]);
 
-  const initResize = ({ target }) => {
-    headerBeingResized = target.parentNode;
-    headerBeingResized.classList.add("header--being-resized");
+  const handleSingleCheck = (checked, id) => {
+    if (checked) {
+      setCheckItems((prev) => [...prev, id]);
+    } else {
+      setCheckItems(checkItems.filter((el) => el !== id));
+    }
   };
 
-  const handleClassName = ({ target }) => {
-    headerBeingResized = target.parentNode.classList.remove(
-      "header--being-resized"
-    ); 
+  const handleAllCheck = (checked) => {
+    if (checked) {
+      const idArray = [];
+      data.forEach((el) => idArray.push(el.id));
+      setCheckItems(idArray);
+    } else {
+      setCheckItems([]);
+    }
   };
-
-  const handleMoveDom = (e) => requestAnimationFrame(() => {
-    
-    // Calculate the desired width
-    const horizontalScrollOffset = document.documentElement.scrollLeft;
-    const width = (horizontalScrollOffset + e.clientX) - headerBeingResized.offsetLeft;
-    
-    // Update the column object with the new size value
-    const column = columns.find(({ header }) => header === headerBeingResized);
-    column.size = Math.max(min, width) + 'px'; // Enforce our minimum
-    
-    // For the other headers which don't have a set width, fix it to their computed width
-    columns.forEach((column) => {
-      if(column.size.startsWith('minmax')){ // isn't fixed yet (it would be a pixel value otherwise)
-        column.size = parseInt(column.header.clientWidth, 10) + 'px';
-        console.log('onMouseMove', column.size);
-      }
-    });
-    
-    /* 
-      Update the column sizes
-      Reminder: grid-template-columns sets the width for all columns in one value
-    */
-    table.style.gridTemplateColumns = columns
-      .map(({ header, size }) => size)
-      .join(' ');
-  });
 
   return (
     <section className={styles.dataGrid}>
       <table>
         <thead>
-          {title.map((title, index) => {
-            return (
-              <tr key={index}>
-                <th
-                  onMouseDown={initResize}
-                  onMouseUp={handleClassName}
-                  onMouseMove={handleMoveDom}
-                >
-                  {title} <span className={styles.resize_handle}></span>
-                </th>
-              </tr>
-            );
-          })}
+          <tr>
+            <th>
+              <input
+                type="checkbox"
+                onChange={(e) => handleAllCheck(e.target.checked)}
+                checked={checkItems.length === data.length ? true : false}
+              />
+            </th>
+
+            {title.map(({ title, id }) => {
+              return (
+                <>
+                  <th key={id}>
+                    {title} <span className={styles.resize_handle}></span>
+                  </th>
+                </>
+              );
+            })}
+          </tr>
         </thead>
         <tbody>
-          {content.map(
+          {data.map(
             ({
               id,
               First_name,
@@ -140,7 +123,15 @@ export default function DataGrid() {
               IBAN,
             }) => {
               return (
-                <tr>
+                <tr key={id}>
+                  <td className={styles.table_data}>
+                    <input
+                      type="checkbox"
+                      name={`select-${id}`}
+                      onChange={(e) => handleSingleCheck(e.target.checked, id)}
+                      checked={checkItems.includes(id) ? true : false}
+                    />
+                  </td>
                   <td>{id}</td>
                   <td>{First_name}</td>
                   <td>{Last_name}</td>
