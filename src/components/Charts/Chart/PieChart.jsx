@@ -1,4 +1,4 @@
-import { PieData } from "../../util/chartData.js";
+import { PieData } from "../../../util/chartData.js";
 
 import {
   Chart as ChartJS,

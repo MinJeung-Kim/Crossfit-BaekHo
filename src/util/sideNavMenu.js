@@ -8,7 +8,7 @@ export const menus = [
       children: [
         { id: 2, name: "Category" },
         { id: 2, name: "CategoryDetail", url: "/category" },
-        { id: 2, name: "JavaScript", url: "/" },
+        { id: 2, name: "JavaScript", url: "/user" },
         { id: 2, name: "PHP & MySQL", url: "/" },
       ],
     },

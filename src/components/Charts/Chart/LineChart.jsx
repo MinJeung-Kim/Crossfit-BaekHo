@@ -1,4 +1,4 @@
-import { LineData } from "../../util/chartData.js";
+import { LineData } from "../../../util/chartData.js";
 import {
   Chart as ChartJS,
   CategoryScale,

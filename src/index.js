@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import Videos from "./pages/Videos";
 import LoginForm from "./pages/LoginForm/LoginForm";
 import { ContextProvider } from "./context/AuthContext";
+import User from "./pages/User/User";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
         index: true,
         element: <Dashboard />,
       },
+      { path: "/user", element: <User /> },
       { path: "/videos", element: <Videos /> },
       { path: "/videos/:keyword", element: <Videos /> },
     ],

@@ -19,7 +19,8 @@ table {
     minmax(150px, 3.33fr)
     minmax(150px, 1.67fr)
     minmax(150px, 3.33fr)
-    minmax(150px, 1.67fr);
+    minmax(150px, 1.67fr)
+    minmax(100px, 1fr);
   background: #fff;
   border-radius: 5px;
   box-shadow: 0 5px 5px -5px rgb(0 0 0 / 10%);
@@ -41,6 +42,34 @@ thead,
 tbody,
 tr {
   display: contents;
+}
+
+tbody tr td:last-child {
+  position: relative;
+  text-align: center;
+}
+
+tbody tr td:last-child::before {
+  content: "";
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 3px;
+  background: rgba(0, 0, 0, 0.08);
+  padding: 0.2rem;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+tbody tr td:last-child:hover::before {
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.03);
+
+}
+
+tbody tr td i {
+  padding-left: 10px;
+  padding-top: 2px;
 }
 
 tr:nth-child(even) td {
@@ -120,7 +149,7 @@ td {
 }
 
 input[type="checkbox"] {
-  width: 1.2rem;
+  min-width: 1.2rem;
   height: 1.2rem;
   border-radius: 3px;
   border: 1px solid #999;

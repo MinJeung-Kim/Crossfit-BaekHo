@@ -1,4 +1,4 @@
-import { BarData } from "../../util/chartData.js";
+import { BarData } from "../../../util/chartData.js";
 import {
   Chart as ChartJS,
   BarElement,
