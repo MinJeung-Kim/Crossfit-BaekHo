@@ -1,6 +1,6 @@
-import { createContext, useContext, useState } from "react";
-import Auth from "../api/AuthApi/auth";
+import { createContext, useContext, useState } from "react"; 
 import fakeAuthClient from "../api/AuthApi/fakeAuthClient";
+import Auth from '../api/AuthApi/auth'
 
 export const AuthContext = createContext();
 
