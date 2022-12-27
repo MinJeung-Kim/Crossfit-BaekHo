@@ -1,38 +1,30 @@
-import React, { useContext  } from "react";
-import { useSetState } from "react-use";
-import { AuthContext } from "../../context/AuthContext";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../context/AuthContext";
 import { socialMedia } from "../../util/socialMedia";
-import UserInfoInput from "../common/UserInfoInput/UserInfoInput"; 
+import UserInfoInput from "../common/UserInfoInput/UserInfoInput";
 import styles from "./Login.module.css";
- 
-const initialState = {
-  email: '',
-  password: ''
-}
-export default function Login({ isLogin, setIsLogin }) { 
-  
-  // const [inputs, setInputs] = useState({
-  //   email: "",
-  //   password: "",
-  // });
 
-  const { state: ContextState, login } = useContext(AuthContext);
-  // const {
-  //   isLoginPending,
-  //   isLoggedIn,
-  //   loginError
-  // } = ContextState;
-  const [state, setState] = useSetState(initialState);
+export default function Login({ isLogin, setIsLogin }) {
+  const navigate = useNavigate();
+  const { auth, setUser } = useAuthContext();
+  const [account, setAccount] = useState({
+    email: "",
+    password: "",
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); 
-    const { email, password } = state;
-    login(email, password);
-    setState({
-      email: '',
-      password: ''
-    });
-  }
+  const onSubmitAccount = async (e) => {
+    e.preventDefault();
+    const userInfo = await auth.auth(account);
+
+    console.log(userInfo);
+    if (!userInfo) {
+      return "아이디 또는 비밀번호가 일치하지 않습니다.";
+    } else {
+      setUser(userInfo);
+      navigate("/", { replace: true });
+    }
+  };
 
   const handleChangeStatus = () => {
     setIsLogin(!isLogin);
@@ -41,15 +33,15 @@ export default function Login({ isLogin, setIsLogin }) {
   return (
     <div className={`${styles.form} ${styles.login}`}>
       <p className={styles.title}> Login </p>
-      <form action=""  onSubmit={handleSubmit}>
+      <form onSubmit={onSubmitAccount}>
         <UserInfoInput
           name={"email"}
           type={"text"}
           placeholder={"Enter your email"}
           icon={"bx-envelope"}
           error={""}
-          inputs={state}
-          setInputs={setState}
+          inputs={account}
+          setInputs={setAccount}
         />
 
         <UserInfoInput
@@ -59,8 +51,8 @@ export default function Login({ isLogin, setIsLogin }) {
           icon={"bx-lock-alt"}
           hideIcon={"bx-hide"}
           error={""}
-          inputs={state}
-          setInputs={setState}
+          inputs={account}
+          setInputs={setAccount}
           autoComplete={"off"}
         />
 
@@ -77,7 +69,7 @@ export default function Login({ isLogin, setIsLogin }) {
         </div>
 
         <div className={`${styles.input_field} ${styles.button}`}>
-          <input type="submit" value={"Login Now"}  />
+          <input type="submit" value={"Login Now"} />
         </div>
       </form>
 
@@ -97,10 +89,7 @@ export default function Login({ isLogin, setIsLogin }) {
       <div className={styles.media_options}>
         {socialMedia.map(({ name, icon }) => {
           return (
-            <div
-              className={`${styles.field} ${styles.git}`}
-              key={name} 
-            >
+            <div className={`${styles.field} ${styles.git}`} key={name}>
               <i className={`bx ${icon} ${styles.git_icon}`}></i>
               <span className={styles.tooltip}>{name}</span>
             </div>

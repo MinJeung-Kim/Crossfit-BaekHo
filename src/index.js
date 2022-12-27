@@ -9,7 +9,7 @@ import NotFound from "./pages/NotFound";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Videos from "./pages/Videos";
 import LoginForm from "./pages/LoginForm/LoginForm";
-import { ContextProvider } from "./context/AuthContext";
+import { AuthContextProvider } from "./context/AuthContext";
 import User from "./pages/User/User";
 
 const router = createBrowserRouter([
@@ -37,9 +37,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ContextProvider value={500}>
+    <AuthContextProvider>
       <RouterProvider router={router} />
-    </ContextProvider>
+    </AuthContextProvider>
   </React.StrictMode>
 );
 

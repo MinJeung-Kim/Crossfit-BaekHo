@@ -11,11 +11,11 @@ import { AuthContext } from "./context/AuthContext";
 const queryClient = new QueryClient();
 
 function App() {
-  const { state } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [isActive, setIsActive] = useState(false);
   return (
     <main className={styles.root}>
-      {!state.isLoggedIn ? (
+      {!user ? (
         <LoginForm />
       ) : (
         <>
