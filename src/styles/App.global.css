@@ -4,7 +4,11 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; 
+  box-sizing: border-box;
+}
+
+body {
+  accent-color: var(--color-accent);
 }
 
 :root {
@@ -12,10 +16,14 @@
   --color-bg: #f5f5f5;
   --color-dark-text: #fff;
   --color-text: #333;
-
   --color-accent: #6c7ae0;
+  --color-nav-header: #fff;
+  --color-nav-header-text: #888;
 }
 
-body {
-  accent-color: var(--color-accent);
+html.dark { 
+  --color-nav-header: #2b2a2c;
+  --color-bg: #11101d;
+  --color-text: #fff; 
+  --color-nav-header-text: #fff;
 }

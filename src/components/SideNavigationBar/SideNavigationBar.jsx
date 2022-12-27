@@ -1,16 +1,15 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
+import { useAuthContext } from "../../context/AuthContext";
 import { menus } from "../../util/sideNavMenu";
 import styles from "./SideNavigationBar.module.css";
 
 export default function SideNavigationBar({ isActive }) {
-  const { logout } = useContext(AuthContext);
+  const {user, setUser } = useAuthContext();
   const [arrow, setArrow] = useState({});
 
-  const handleLogout = (e) => {
-    e.preventDefault();
-    logout();
+  const handleLogout = () => {
+    setUser("");
   };
 
   const handleToggle = (id) => {
@@ -72,8 +71,8 @@ export default function SideNavigationBar({ isActive }) {
           </div>
 
           <div className={styles.name_job}>
-            <div className={styles.profile_name}>Prem shahi</div>
-            <div className={styles.job}>Web Design</div>
+            <div className={styles.profile_name}>{user.name}</div>
+            <div className={styles.job}>{user.email}</div>
           </div>
           <i className="bx bx-log-out" onClick={handleLogout}></i>
         </div>

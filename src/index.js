@@ -11,6 +11,7 @@ import Videos from "./pages/Videos";
 import LoginForm from "./pages/LoginForm/LoginForm";
 import { AuthContextProvider } from "./context/AuthContext";
 import User from "./pages/User/User";
+import { ModeProvider } from "./context/ModeContext";
 
 const router = createBrowserRouter([
   {
@@ -37,8 +38,10 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AuthContextProvider>
-      <RouterProvider router={router} />
+    <AuthContextProvider> 
+      <ModeProvider>
+        <RouterProvider router={router} />{" "}
+      </ModeProvider>
     </AuthContextProvider>
   </React.StrictMode>
 );

@@ -38,11 +38,9 @@ export default function DataGrid() {
 
             {title.map((title) => {
               return (
-                <>
-                  <th key={title}>
-                    {title} <span className={styles.resize_handle}></span>
-                  </th>
-                </>
+                <th key={title}>
+                  {title} <span className={styles.resize_handle}></span>
+                </th>
               );
             })}
           </tr>
@@ -58,7 +56,7 @@ export default function DataGrid() {
               Country,
               University,
               IBAN,
-              Action
+              Action,
             }) => {
               return (
                 <tr key={id}>
