@@ -28,6 +28,9 @@ export default function UserMenu() {
           <i className="bx bx-search"></i>
         </div>
       </div>
+      <div className={`${styles.searchToggle} ${styles.search_logout}`}>
+        <i className="bx bx-log-in-circle"></i>
+      </div>
     </div>
   );
 }

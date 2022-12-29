@@ -19,6 +19,8 @@ body {
   --color-accent: #6c7ae0;
   --color-nav-header: #fff;
   --color-nav-header-text: #888;
+
+  --content-padding : 20px;
 }
 
 html.dark { 

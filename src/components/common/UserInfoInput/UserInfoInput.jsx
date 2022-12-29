@@ -9,16 +9,16 @@ export default function UserInfoInput({
   icon,
   hideIcon,
   error,
+  setErrorMsg,
   inputs,
   setInputs,
 }) {
   const [isType, setIsType] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
 
   const handleErrorCheck = (email) => {
-    var reg =
+    const reg =
       /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-    !reg.test(email) && setErrorMsg(error);
+    return !reg.test(email) && setErrorMsg(error);
   };
 
   const handleChange = (e) => {
@@ -64,7 +64,7 @@ export default function UserInfoInput({
           type={isType ? "text" : type}
           placeholder={placeholder}
           autoComplete={autoComplete}
-          required 
+          required
         />
         {hideIcon ? (
           chooseIcon()
@@ -72,10 +72,10 @@ export default function UserInfoInput({
           <i className={`bx ${icon} ${styles.icon}`}></i>
         )}
       </div>
-      {errorMsg !== "" && (
+      {error !== "" && (
         <span className={styles.errorMsg}>
           <i className="bx bx-error-circle"></i>
-          {errorMsg}
+          {error}
         </span>
       )}
     </>

@@ -73,11 +73,10 @@
   transition: all 0.3s ease;
 }
 
-.searchToggle.active ~ .search_field{
+.searchToggle.active ~ .search_field {
   bottom: -74px;
   opacity: 1;
   pointer-events: auto;
-
 }
 
 .search_field::before {
@@ -95,7 +94,7 @@
 .search_field input {
   height: 100%;
   width: 100%;
-  padding: 0 45px 0 15px;  
+  padding: 0 45px 0 15px;
   border-radius: 4px;
   font-size: 14px;
   font-weight: 400;
@@ -109,4 +108,14 @@
   right: 15px;
   font-size: 22px;
   cursor: pointer;
+}
+
+.search_logout {
+  display: none;
+}
+
+@media (max-width: 1216px) {
+  .search_logout {
+    display: flex;
+  }
 }

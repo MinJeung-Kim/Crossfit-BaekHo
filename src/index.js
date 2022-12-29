@@ -6,11 +6,11 @@ import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import NotFound from "./pages/NotFound";
-import Dashboard from "./pages/Dashboard/Dashboard";
-import Videos from "./pages/Videos";
 import LoginForm from "./pages/LoginForm/LoginForm";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import Users from "./pages/Users/Users";
+import Videos from "./pages/Videos";
 import { AuthContextProvider } from "./context/AuthContext";
-import User from "./pages/User/User";
 import { ModeProvider } from "./context/ModeContext";
 
 const router = createBrowserRouter([
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
         index: true,
         element: <Dashboard />,
       },
-      { path: "/user", element: <User /> },
+      { path: "/users", element: <Users /> },
       { path: "/videos", element: <Videos /> },
       { path: "/videos/:keyword", element: <Videos /> },
     ],
@@ -38,9 +38,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AuthContextProvider> 
+    <AuthContextProvider>
       <ModeProvider>
-        <RouterProvider router={router} />{" "}
+        <RouterProvider router={router} />
       </ModeProvider>
     </AuthContextProvider>
   </React.StrictMode>

@@ -1,8 +1,9 @@
 .home_section {
   background: var(--color-bg);
-  position: absolute;
+  /* position: absolute; */
   width: 100%;
   z-index: 999;
+  margin-bottom: 15px;
 }
 
 .home_section nav {

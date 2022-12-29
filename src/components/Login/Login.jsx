@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 import { socialMedia } from "../../util/socialMedia";
+import Alert from "../common/Alert/Alert";
 import UserInfoInput from "../common/UserInfoInput/UserInfoInput";
 import styles from "./Login.module.css";
 
@@ -12,6 +13,8 @@ export default function Login({ isLogin, setIsLogin }) {
     email: "",
     password: "",
   });
+  const [errorMsg, setErrorMsg] = useState("");
+  const [satusMsg, setSsatuseMsg] = useState("");
 
   const onSubmitAccount = async (e) => {
     e.preventDefault();
@@ -19,7 +22,7 @@ export default function Login({ isLogin, setIsLogin }) {
 
     console.log(userInfo);
     if (!userInfo) {
-      return "아이디 또는 비밀번호가 일치하지 않습니다.";
+      setSsatuseMsg("아이디 또는 비밀번호가 일치하지 않습니다.");
     } else {
       setUser(userInfo);
       navigate("/", { replace: true });
@@ -32,6 +35,7 @@ export default function Login({ isLogin, setIsLogin }) {
 
   return (
     <div className={`${styles.form} ${styles.login}`}>
+      {satusMsg !=="" && <Alert msg={satusMsg} setMsg={setSsatuseMsg}/>}
       <p className={styles.title}> Login </p>
       <form onSubmit={onSubmitAccount}>
         <UserInfoInput
@@ -39,7 +43,8 @@ export default function Login({ isLogin, setIsLogin }) {
           type={"text"}
           placeholder={"Enter your email"}
           icon={"bx-envelope"}
-          error={""}
+          setErrorMsg={setErrorMsg}
+          error={errorMsg}
           inputs={account}
           setInputs={setAccount}
         />
@@ -50,7 +55,7 @@ export default function Login({ isLogin, setIsLogin }) {
           placeholder={"Enter your Password"}
           icon={"bx-lock-alt"}
           hideIcon={"bx-hide"}
-          error={""}
+          error={errorMsg}
           inputs={account}
           setInputs={setAccount}
           autoComplete={"off"}

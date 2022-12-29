@@ -5,13 +5,13 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-gap: 30px;
-  padding: 20px;
+  padding: var(--content-padding);
 }
 
 .box {
   position: relative;
   background: #fff;
-  padding: 20px;
+  padding: var(--content-padding);
   width: 100%;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
   border-radius: 20px;
