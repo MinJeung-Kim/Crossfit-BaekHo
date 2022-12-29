@@ -1,17 +1,22 @@
-import { createContext, useContext, useState } from "react"; 
+import { createContext, useContext, useState } from "react";
+import { useCookies } from "react-cookie";
+import Auth from "../api/AuthApi/auth";
 import fakeAuthClient from "../api/AuthApi/fakeAuthClient";
-import Auth from '../api/AuthApi/auth'
 
 export const AuthContext = createContext();
 
 export function AuthContextProvider({ children }) {
-  const [user, setUser] = useState([{ email: "", name: "" }]);
+  const [cookies, setCookie, removeCookie] = useCookies();
+  const [userInfo, setUserInfo] = useState([{ email: "", name: "" }]);
 
   const client = new fakeAuthClient();
   const auth = new Auth(client);
 
+  console.log('AuthContextProvider : ');
   return (
-    <AuthContext.Provider value={{ auth, user, setUser }}>
+    <AuthContext.Provider
+      value={{ auth, userInfo, setUserInfo, cookies, setCookie, removeCookie }}
+    >
       {children}
     </AuthContext.Provider>
   );

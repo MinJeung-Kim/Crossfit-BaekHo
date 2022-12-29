@@ -1,0 +1,27 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "users": [
+    {
+      "email": "beakho@test.com",
+      "password": "$2a$10$jSMD8qX98aGDZHE3y0IK7uPvoAXW/b67N7NfRJF.lwSdrjVYWFPty",
+      "name": "admin", 
+      "id": 1
+    }
+  ]
+}

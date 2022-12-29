@@ -8,7 +8,7 @@ import styles from "./Login.module.css";
 
 export default function Login({ isLogin, setIsLogin }) {
   const navigate = useNavigate();
-  const { auth, setUser } = useAuthContext();
+  const { auth, setUserInfo, setCookie } = useAuthContext();
   const [account, setAccount] = useState({
     email: "",
     password: "",
@@ -18,14 +18,21 @@ export default function Login({ isLogin, setIsLogin }) {
 
   const onSubmitAccount = async (e) => {
     e.preventDefault();
-    const userInfo = await auth.auth(account);
-
-    console.log(userInfo);
-    if (!userInfo) {
-      setSsatuseMsg("아이디 또는 비밀번호가 일치하지 않습니다.");
-    } else {
-      setUser(userInfo);
+    try {
+      const userInfo = await auth.auth(account);
+      console.log("onSubmitAccount : ", userInfo);
+      setCookie("accessToken", userInfo["accessToken"], { path: "/login" });
+      const { accessToken: _, ...rest } = userInfo;
+      setUserInfo(rest);
       navigate("/", { replace: true });
+      // if (!userInfo) {
+      //   setSsatuseMsg("아이디 또는 비밀번호가 일치하지 않습니다.");
+      // } else {
+      //   setUserInfo(userInfo);
+      //   navigate("/", { replace: true });
+      // }
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -35,7 +42,7 @@ export default function Login({ isLogin, setIsLogin }) {
 
   return (
     <div className={`${styles.form} ${styles.login}`}>
-      {satusMsg !=="" && <Alert msg={satusMsg} setMsg={setSsatuseMsg}/>}
+      {satusMsg !== "" && <Alert msg={satusMsg} setMsg={setSsatuseMsg} />}
       <p className={styles.title}> Login </p>
       <form onSubmit={onSubmitAccount}>
         <UserInfoInput

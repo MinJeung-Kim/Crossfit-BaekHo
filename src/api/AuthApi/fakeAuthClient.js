@@ -1,7 +1,7 @@
-import axios from "axios"; 
+import axios from "axios";
 export default class fakeAuthClient {
-  async login() { 
-    return axios.get(`/mocDatas/users.json`);
+  async login(account) { 
+    return axios.post("http://localhost:8000/login", account);
   }
 
   async logout() {

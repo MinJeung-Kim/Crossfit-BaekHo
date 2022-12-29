@@ -15,11 +15,11 @@ export default function UserInfoInput({
 }) {
   const [isType, setIsType] = useState(false);
 
-  const handleErrorCheck = (email) => {
-    const reg =
-      /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-    return !reg.test(email) && setErrorMsg(error);
-  };
+  // const handleErrorCheck = (email) => {
+  //   const reg =
+  //     /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+  //   return !reg.test(email) && setErrorMsg(error);
+  // };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,7 +29,7 @@ export default function UserInfoInput({
       [name]: value,
     };
 
-    if (name === "email") handleErrorCheck(value);
+    // if (name === "email") handleErrorCheck(value);
 
     setInputs(nextInputs);
   };

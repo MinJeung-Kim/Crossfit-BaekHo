@@ -4,12 +4,12 @@ import "./index.css";
 import "./styles/App.global.css";
 import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { CookiesProvider } from 'react-cookie';
 import reportWebVitals from "./reportWebVitals";
 import NotFound from "./pages/NotFound";
 import LoginForm from "./pages/LoginForm/LoginForm";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Users from "./pages/Users/Users";
-import Videos from "./pages/Videos";
 import { AuthContextProvider } from "./context/AuthContext";
 import { ModeProvider } from "./context/ModeContext";
 
@@ -29,8 +29,6 @@ const router = createBrowserRouter([
         element: <Dashboard />,
       },
       { path: "/users", element: <Users /> },
-      { path: "/videos", element: <Videos /> },
-      { path: "/videos/:keyword", element: <Videos /> },
     ],
   },
 ]);
@@ -38,11 +36,13 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AuthContextProvider>
-      <ModeProvider>
-        <RouterProvider router={router} />
-      </ModeProvider>
-    </AuthContextProvider>
+    <CookiesProvider>
+      <AuthContextProvider>
+        <ModeProvider>
+          <RouterProvider router={router} />
+        </ModeProvider>
+      </AuthContextProvider> 
+    </CookiesProvider>
   </React.StrictMode>
 );
 

@@ -1,9 +1,10 @@
 {
-    "users": [
-      {
-        "email": "admin",
-        "password": "admin",
-        "name": "BaekHo"
-      }
-    ]
-  }
+  "accessToken": "1234567",
+  "users": [
+    {
+      "email": "admin",
+      "password": "admin",
+      "name": "BaekHo"
+    }
+  ]
+}
