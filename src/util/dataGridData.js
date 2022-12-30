@@ -1,3 +1,5 @@
+import { BiPen } from "react-icons/bi";
+
 export const title = [
   "ID",
   "First name",
@@ -6,8 +8,8 @@ export const title = [
   "Street",
   "Country",
   "University",
-  "IBAN", 
-  "Action"
+  "IBAN",
+  "Action",
 ];
 
 export const data = [
@@ -20,7 +22,11 @@ export const data = [
     Country: "Macedonia",
     University: "South East European University",
     IBAN: "FR11 4824 2942 41H9 XBHC 46P2 O86",
-    Action:<i className='bx bx-pen'></i>
+    Action: (
+      <i>
+        <BiPen />
+      </i>
+    ),
   },
   {
     id: 2,
@@ -31,7 +37,11 @@ export const data = [
     Country: "Portugal",
     University: "Instituto Superior Novas Profissões - INP",
     IBAN: "GR96 7559 456P GUAN WTAJ 3VPB S0P",
-    Action:<i className='bx bx-pen'></i>
+    Action: (
+      <i>
+        <BiPen />
+      </i>
+    ),
   },
   {
     id: 3,
@@ -42,7 +52,11 @@ export const data = [
     Country: "Albania",
     University: "Epoka University",
     IBAN: "LI59 1813 2T7T VKTO 6RKE X",
-    Action:<i className='bx bx-pen'></i>
+    Action: (
+      <i>
+        <BiPen />
+      </i>
+    ),
   },
   {
     id: 4,
@@ -53,7 +67,11 @@ export const data = [
     Country: "Indonesia",
     University: "Universitas Mahasaraswati Denpasar",
     IBAN: "BR27 4570 4226 4255 5239 0197 316T J",
-    Action:<i className='bx bx-pen'></i>
+    Action: (
+      <i>
+        <BiPen />
+      </i>
+    ),
   },
   {
     id: 5,
@@ -64,6 +82,10 @@ export const data = [
     Country: "United Kingdom",
     University: "University of Plymouth",
     IBAN: "BG34 MPVP 8782 88EX H1CJ SC",
-    Action:<i className='bx bx-pen'></i>
+    Action: (
+      <i>
+        <BiPen />
+      </i>
+    ),
   },
 ];
