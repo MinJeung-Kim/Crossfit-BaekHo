@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { HiOutlineMail } from "react-icons/hi";
+import { FiLock } from "react-icons/fi";
+import { GrFormViewHide } from "react-icons/gr";
 import { useAuthContext } from "../../context/AuthContext";
 import { socialMedia } from "../../util/socialMedia";
 import Alert from "../common/Alert/Alert";
@@ -21,8 +24,8 @@ export default function Login() {
     e.preventDefault();
     try {
       const userInfo = await auth.auth(account);
-      if (userInfo.status === 200) { 
-        setCookie("accessToken", userInfo.accessToken );
+      if (userInfo.status === 200) {
+        setCookie("accessToken", userInfo.accessToken);
         const { accessToken: _, ...rest } = userInfo;
         setUserInfo(rest);
         navigate("/", { replace: true });
@@ -49,7 +52,7 @@ export default function Login() {
           name={"email"}
           type={"text"}
           placeholder={"Enter your email"}
-          icon={"bx-envelope"}
+          icon={<HiOutlineMail />}
           setErrorMsg={setErrorMsg}
           error={errorMsg}
           inputs={account}
@@ -60,8 +63,8 @@ export default function Login() {
           name={"password"}
           type={"password"}
           placeholder={"Enter your Password"}
-          icon={"bx-lock-alt"}
-          hideIcon={"bx-hide"}
+          icon={<FiLock />}
+          hideIcon={<GrFormViewHide />}
           error={errorMsg}
           inputs={account}
           setInputs={setAccount}
@@ -102,7 +105,7 @@ export default function Login() {
         {socialMedia.map(({ name, icon }) => {
           return (
             <div className={`${styles.field} ${styles.git}`} key={name}>
-              <i className={`bx ${icon} ${styles.git_icon}`}></i>
+              <i className={styles.git_icon}>{icon}</i>
               <span className={styles.tooltip}>{name}</span>
             </div>
           );

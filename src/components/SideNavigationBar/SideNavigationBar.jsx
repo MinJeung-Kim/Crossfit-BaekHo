@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { RiLogoutCircleRLine } from "react-icons/ri";
+import { SiCplusplus } from "react-icons/si";
 import { useAuthContext } from "../../context/AuthContext";
 import { menus } from "../../util/sideNavMenu";
 import styles from "./SideNavigationBar.module.css";
 
 export default function SideNavigationBar({ isActive }) {
-  const {userInfo, onLogout } = useAuthContext();
-  const [arrow, setArrow] = useState({}); 
+  const { userInfo, onLogout } = useAuthContext();
+  const [arrow, setArrow] = useState({});
 
   const handleToggle = (id) => {
     // console.log({ ...arrow, [id]: !arrow[id] });
@@ -17,7 +19,7 @@ export default function SideNavigationBar({ isActive }) {
     <>
       <nav className={`${styles.sidebar}  ${isActive ? styles.close : ""}`}>
         <div className={styles.logo_details}>
-          <i className="bx bxl-c-plus-plus"></i>
+          <i ><SiCplusplus/></i>
           <span className={styles.logo_name}>CodingLab</span>
         </div>
         <ul className={styles.nav_links}>
@@ -26,7 +28,7 @@ export default function SideNavigationBar({ isActive }) {
               <li className={arrow[id] && `${styles.showMenu}`} key={name}>
                 <div className={styles.icon_link}>
                   <a>
-                    <i className={`bx ${icon}`}></i>
+                    <i>{icon}</i>
                     <span
                       className={styles.link_name}
                       onClick={(e) => handleToggle(id)}
@@ -49,7 +51,7 @@ export default function SideNavigationBar({ isActive }) {
             ) : (
               <li key={name}>
                 <Link to={url}>
-                  <i className={`bx ${icon}`}></i>
+                  <i>{icon}</i>
                   <span className={styles.link_name}>{name}</span>
                 </Link>
                 <ul className={`${styles.sub_menu} ${styles.blank}`}>
@@ -70,7 +72,9 @@ export default function SideNavigationBar({ isActive }) {
             <div className={styles.profile_name}>{userInfo.name}</div>
             <div className={styles.job}>{userInfo.email}</div>
           </div>
-          <i className="bx bx-log-out" onClick={onLogout}></i>
+          <i onClick={onLogout}>
+            <RiLogoutCircleRLine />
+          </i>
         </div>
       </nav>
     </>

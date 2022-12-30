@@ -1,21 +1,24 @@
-import React, { useState } from "react"; 
+import React, { useState } from "react";
 import { useAuthContext } from "../../context/AuthContext";
 import UserInfoInput from "../common/UserInfoInput/UserInfoInput";
+import { HiOutlineMail } from "react-icons/hi";
+import { FiUser, FiLock } from "react-icons/fi";
+import { GrFormViewHide } from "react-icons/gr";
 import styles from "../Login/Login.module.css";
 
-export default function Registration() { 
+export default function Registration() {
   const { auth, onChangeConnectForm } = useAuthContext();
   const [inputs, setInputs] = useState({
     name: "",
     email: "",
     password: "",
-    repassword: "",
+    passwordConfirm: "",
   });
 
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      const status = await auth.auth(inputs); 
+      const status = await auth.auth(inputs);
       if (status === 201) {
         onChangeConnectForm();
       } else {
@@ -34,7 +37,7 @@ export default function Registration() {
           name={"name"}
           type={"text"}
           placeholder={"Enter your name"}
-          icon={"bx-user"}
+          icon={<FiUser />}
           error={""}
           inputs={inputs}
           setInputs={setInputs}
@@ -43,7 +46,7 @@ export default function Registration() {
           name={"email"}
           type={"text"}
           placeholder={"Enter your email"}
-          icon={"bx-envelope"}
+          icon={<HiOutlineMail />}
           error={""}
           inputs={inputs}
           setInputs={setInputs}
@@ -52,19 +55,19 @@ export default function Registration() {
           name={"password"}
           type={"password"}
           placeholder={"Create a password"}
-          icon={"bx-lock-alt"}
-          hideIcon={"bx-hide"}
+          icon={<FiLock />}
+          hideIcon={<GrFormViewHide />}
           error={""}
           inputs={inputs}
           setInputs={setInputs}
           autoComplete={"off"}
         />
         <UserInfoInput
-          name={"repassword"}
+          name={"passwordConfirm"}
           type={"password"}
           placeholder={"Confirm a password"}
-          icon={"bx-lock-alt"}
-          hideIcon={"bx-hide"}
+          icon={<FiLock />}
+          hideIcon={<GrFormViewHide />}
           error={"Passwords does not match"}
           inputs={inputs}
           setInputs={setInputs}

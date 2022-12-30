@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BiShow } from "react-icons/bi";
 import styles from "./UserInfoInput.module.css";
 
 export default function UserInfoInput({
@@ -42,13 +43,17 @@ export default function UserInfoInput({
     if (hideIcon) {
       return (
         <>
-          <i
+          {/* <i
             className={`bx ${isType ? "bx-show" : hideIcon} ${
               styles.showHidePw
             }`}
             onClick={handleChangeType}
-          ></i>
-          <i className={`bx ${icon} ${styles.icon}`}></i>
+          ></i> */}
+          <i className={styles.showHidePw} onClick={handleChangeType}>
+            {isType ? hideIcon : <BiShow />}
+          </i>
+          {/* <i className={`bx ${icon} ${styles.icon}`}></i> */}
+          <i className={styles.icon}>{icon}</i>
         </>
       );
     }
@@ -69,7 +74,8 @@ export default function UserInfoInput({
         {hideIcon ? (
           chooseIcon()
         ) : (
-          <i className={`bx ${icon} ${styles.icon}`}></i>
+          // <i className={`bx ${icon} ${styles.icon}`}></i>
+          <i className={styles.icon}>{icon}</i>
         )}
       </div>
       {error !== "" && (

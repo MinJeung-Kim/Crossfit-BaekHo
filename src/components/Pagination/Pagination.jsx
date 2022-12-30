@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import { BiChevronLeft, BiChevronsLeft } from "react-icons/bi";
+import { FiChevronRight, FiChevronsRight } from "react-icons/fi";
 import styles from "./Pagination.module.css";
+
 export default function Pagination() {
   const [page, setPage] = useState(1);
   const total = 100;
@@ -22,14 +25,18 @@ export default function Pagination() {
         className={`${styles.page_btn} ${styles.start_page}`}
         disabled={page === 1}
       >
-        <i className="bx bx-chevrons-left"></i>
+        <i>
+          <BiChevronsLeft />
+        </i>
       </button>
       <button
         className={`${styles.page_btn} ${styles.prev_page}`}
         onClick={handlePrev}
         disabled={page === 1}
       >
-        <i className="bx bx-chevron-left"></i>
+        <i>
+          <BiChevronLeft />
+        </i>
       </button>
       {Array(numPages)
         .fill()
@@ -48,13 +55,17 @@ export default function Pagination() {
         onClick={handleNext}
         disabled={page === numPages}
       >
-        <i className="bx bx-chevron-right"></i>
+        <i>
+          <FiChevronRight />
+        </i>
       </button>
       <button
         className={`${styles.page_btn} ${styles.end_page}`}
         disabled={page === total}
       >
-        <i className="bx bx-chevrons-right"></i>
+        <i>
+          <FiChevronsRight />
+        </i>
       </button>
     </div>
   );

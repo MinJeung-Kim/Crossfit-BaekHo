@@ -1,6 +1,10 @@
+import { AiTwotoneMessage, AiFillGitlab } from "react-icons/ai";
+import { GrFacebookOption } from "react-icons/gr";
+import { SiGoogle } from "react-icons/si";
+
 export const socialMedia = [
-    { name: "git", icon: "bx-git-branch" },
-    { name: "kakao", icon: "bxs-message-rounded" },
-    { name: "facebook", icon: "bxl-facebook" },
-    { name: "google", icon: "bxl-google" },
-  ];
+  { name: "git", icon: <AiFillGitlab /> },
+  { name: "kakao", icon: <AiTwotoneMessage /> },
+  { name: "facebook", icon: <GrFacebookOption /> },
+  { name: "google", icon: <SiGoogle /> },
+];
