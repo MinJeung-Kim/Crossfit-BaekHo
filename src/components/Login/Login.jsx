@@ -6,9 +6,10 @@ import Alert from "../common/Alert/Alert";
 import UserInfoInput from "../common/UserInfoInput/UserInfoInput";
 import styles from "./Login.module.css";
 
-export default function Login({ isLogin, setIsLogin }) {
+export default function Login() {
   const navigate = useNavigate();
-  const { auth, setUserInfo, setCookie } = useAuthContext();
+  const { auth, setUserInfo, setCookie, onChangeConnectForm } =
+    useAuthContext();
   const [account, setAccount] = useState({
     email: "",
     password: "",
@@ -20,7 +21,6 @@ export default function Login({ isLogin, setIsLogin }) {
     e.preventDefault();
     try {
       const userInfo = await auth.auth(account);
-      console.log("onSubmitAccount : ", userInfo);
       setCookie("accessToken", userInfo["accessToken"], { path: "/login" });
       const { accessToken: _, ...rest } = userInfo;
       setUserInfo(rest);
@@ -34,10 +34,6 @@ export default function Login({ isLogin, setIsLogin }) {
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const handleChangeStatus = () => {
-    setIsLogin(!isLogin);
   };
 
   return (
@@ -91,7 +87,7 @@ export default function Login({ isLogin, setIsLogin }) {
           <button
             type="reset"
             className={`${styles.text} ${styles.signup_text}`}
-            onClick={handleChangeStatus}
+            onClick={onChangeConnectForm}
           >
             Signup now
           </button>

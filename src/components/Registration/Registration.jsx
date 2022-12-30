@@ -1,13 +1,10 @@
-import axios from "axios";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useCookies } from "react-cookie";
+import React, { useState } from "react"; 
+import { useAuthContext } from "../../context/AuthContext";
 import UserInfoInput from "../common/UserInfoInput/UserInfoInput";
 import styles from "../Login/Login.module.css";
 
-export default function Registration({ isLogin, setIsLogin }) {
-  const navigate = useNavigate();
-  const [cookies, setCookie, removeCookie] = useCookies();
+export default function Registration() { 
+  const { auth, onChangeConnectForm } = useAuthContext();
   const [inputs, setInputs] = useState({
     name: "",
     email: "",
@@ -15,19 +12,15 @@ export default function Registration({ isLogin, setIsLogin }) {
     repassword: "",
   });
 
-  const handleChangeStatus = () => {
-    setIsLogin(!isLogin);
-  };
-
   const handleSignUp = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     try {
-      const { data } = await axios.post(
-        "http://localhost:8000/register",
-        inputs
-      ); 
-      setCookie("accessToken", data["accessToken"], { path: "/registration" });
-      navigate("/login");
+      const status = await auth.auth(inputs); 
+      if (status === 201) {
+        onChangeConnectForm();
+      } else {
+        return "회원 가입 실패!!!";
+      }
     } catch (error) {
       console.log(error);
     }
@@ -88,7 +81,7 @@ export default function Registration({ isLogin, setIsLogin }) {
           <button
             type="reset"
             className={`${styles.text} ${styles.signup_text}`}
-            onClick={handleChangeStatus}
+            onClick={onChangeConnectForm}
           >
             Signin
           </button>

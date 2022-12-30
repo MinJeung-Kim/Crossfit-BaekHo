@@ -6,16 +6,29 @@ import fakeAuthClient from "../api/AuthApi/fakeAuthClient";
 export const AuthContext = createContext();
 
 export function AuthContextProvider({ children }) {
+  const [isConnectForm, setIsConnectForm] = useState(true);
   const [cookies, setCookie, removeCookie] = useCookies();
   const [userInfo, setUserInfo] = useState([{ email: "", name: "" }]);
 
   const client = new fakeAuthClient();
   const auth = new Auth(client);
 
-  console.log('AuthContextProvider : ');
+  const onChangeConnectForm = () => {
+    setIsConnectForm(!isConnectForm);
+  };
+
   return (
     <AuthContext.Provider
-      value={{ auth, userInfo, setUserInfo, cookies, setCookie, removeCookie }}
+      value={{
+        isConnectForm,
+        onChangeConnectForm,
+        auth,
+        userInfo,
+        setUserInfo,
+        cookies,
+        setCookie,
+        removeCookie,
+      }}
     >
       {children}
     </AuthContext.Provider>

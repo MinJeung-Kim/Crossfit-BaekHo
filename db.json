@@ -20,8 +20,20 @@
     {
       "email": "beakho@test.com",
       "password": "$2a$10$jSMD8qX98aGDZHE3y0IK7uPvoAXW/b67N7NfRJF.lwSdrjVYWFPty",
-      "name": "admin", 
+      "name": "admin",
       "id": 1
+    },
+    {
+      "email": "aaaa@test.com",
+      "password": "$2a$10$6k5XLPb4aeveEa3VOdZlQOti2qMS4UfDWLxNso0cTVEmO9vd/k.9W",
+      "name": "aaaa",
+      "id": 2
+    },
+    {
+      "email": "zzzz@test.com",
+      "password": "$2a$10$78Yqz02FqylBLmk7B.w2E.hjJ0VAmM7zgl0vEDXEh.JDaA4KYeAnm",
+      "name": "zzzz",
+      "id": 3
     }
   ]
 }
