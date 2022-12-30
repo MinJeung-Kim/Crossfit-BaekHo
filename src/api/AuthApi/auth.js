@@ -4,9 +4,9 @@ export default class Auth {
   }
 
   async auth(params) {
-    return params.name !== "" ? this.#register(params) : this.#login(params);
+    return params?.name ? this.#register(params) : this.#login(params);
   }
-
+s
   // async auth(account) {
   //   return account && this.#login(account);
   // }
@@ -25,11 +25,12 @@ export default class Auth {
         //   // throw new Error("아이디 또는 비밀번호가 일치하지 않습니다.");
         // }
         // const { password: _, ...rest } = users;
-        return { ...users, accessToken: res.data.accessToken };
+        return { ...users, accessToken: res.data.accessToken, status:res.status };
       });
   }
 
   async #register({ name, email, password }) {
+    console.log('register');
     return this.apiClient
       .register({ name, email, password }) //
       .then((res) => {

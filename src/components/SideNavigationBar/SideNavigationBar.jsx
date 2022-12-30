@@ -5,12 +5,8 @@ import { menus } from "../../util/sideNavMenu";
 import styles from "./SideNavigationBar.module.css";
 
 export default function SideNavigationBar({ isActive }) {
-  const {userInfo, setUserInfo } = useAuthContext();
-  const [arrow, setArrow] = useState({});
-
-  const handleLogout = () => {
-    setUserInfo("");
-  };
+  const {userInfo, onLogout } = useAuthContext();
+  const [arrow, setArrow] = useState({}); 
 
   const handleToggle = (id) => {
     // console.log({ ...arrow, [id]: !arrow[id] });
@@ -74,7 +70,7 @@ export default function SideNavigationBar({ isActive }) {
             <div className={styles.profile_name}>{userInfo.name}</div>
             <div className={styles.job}>{userInfo.email}</div>
           </div>
-          <i className="bx bx-log-out" onClick={handleLogout}></i>
+          <i className="bx bx-log-out" onClick={onLogout}></i>
         </div>
       </nav>
     </>

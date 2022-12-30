@@ -57,6 +57,7 @@ export default function Registration() {
           error={""}
           inputs={inputs}
           setInputs={setInputs}
+          autoComplete={"off"}
         />
         <UserInfoInput
           name={"repassword"}

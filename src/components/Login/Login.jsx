@@ -21,10 +21,14 @@ export default function Login() {
     e.preventDefault();
     try {
       const userInfo = await auth.auth(account);
-      setCookie("accessToken", userInfo["accessToken"], { path: "/login" });
-      const { accessToken: _, ...rest } = userInfo;
-      setUserInfo(rest);
-      navigate("/", { replace: true });
+      if (userInfo.status === 200) { 
+        setCookie("accessToken", userInfo.accessToken );
+        const { accessToken: _, ...rest } = userInfo;
+        setUserInfo(rest);
+        navigate("/", { replace: true });
+      } else {
+        console.log("false");
+      }
       // if (!userInfo) {
       //   setSsatuseMsg("아이디 또는 비밀번호가 일치하지 않습니다.");
       // } else {

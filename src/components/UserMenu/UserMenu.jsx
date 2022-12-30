@@ -1,7 +1,9 @@
+import { useAuthContext } from "../../context/AuthContext";
 import { useMode } from "../../context/ModeContext";
 import styles from "./UserMenu.module.css";
 
 export default function UserMenu() {
+  const { onLogout } = useAuthContext();
   const { darkMode, toggleDarkMode, searchMode, toggleSearchMode } = useMode();
 
   return (
@@ -29,7 +31,7 @@ export default function UserMenu() {
         </div>
       </div>
       <div className={`${styles.searchToggle} ${styles.search_logout}`}>
-        <i className="bx bx-log-in-circle"></i>
+        <i className="bx bx-log-in-circle"  onClick={onLogout}></i>
       </div>
     </div>
   );
