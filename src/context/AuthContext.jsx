@@ -9,6 +9,7 @@ export function AuthContextProvider({ children }) {
   const [cookies, setCookie, removeCookie] = useCookies();
   const [isConnectForm, setIsConnectForm] = useState(true);
   const [userInfo, setUserInfo] = useState({ email: "", name: "" });
+  const [errorMsg, setErrorMsg] = useState("");
 
   const client = new fakeAuthClient();
   const auth = new Auth(client);
@@ -17,7 +18,6 @@ export function AuthContextProvider({ children }) {
     setIsConnectForm(!isConnectForm);
   };
   const onLogout = () => {
-    console.log("onLogout");
     removeCookie("accessToken");
     setUserInfo({ email: "", name: "" });
   };
@@ -25,6 +25,8 @@ export function AuthContextProvider({ children }) {
   return (
     <AuthContext.Provider
       value={{
+        errorMsg,
+        setErrorMsg,
         isConnectForm,
         onChangeConnectForm,
         auth,

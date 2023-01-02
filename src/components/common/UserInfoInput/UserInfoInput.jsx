@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+// import validator from "validator";
 import { BiShow } from "react-icons/bi";
+import { MdErrorOutline } from "react-icons/md";
 import styles from "./UserInfoInput.module.css";
+import { useAuthContext } from "../../../context/AuthContext";
 
 export default function UserInfoInput({
   name,
@@ -9,18 +12,20 @@ export default function UserInfoInput({
   autoComplete,
   icon,
   hideIcon,
-  error,
-  setErrorMsg,
   inputs,
   setInputs,
 }) {
+  const { error, setErrorMsg } = useAuthContext();
   const [isType, setIsType] = useState(false);
 
-  // const handleErrorCheck = (email) => {
-  //   const reg =
-  //     /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-  //   return !reg.test(email) && setErrorMsg(error);
-  // };
+  const handleValidationCheck = (email) => {
+    // if (validator.isEmail(email)) {
+    //   console.log(email);
+    //   setErrorMsg("Valid Email :)");
+    // } else {
+    //   setErrorMsg("Enter valid Email!");
+    // }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,7 +35,7 @@ export default function UserInfoInput({
       [name]: value,
     };
 
-    // if (name === "email") handleErrorCheck(value);
+    if (name === "email") handleValidationCheck(value);
 
     setInputs(nextInputs);
   };
@@ -43,16 +48,9 @@ export default function UserInfoInput({
     if (hideIcon) {
       return (
         <>
-          {/* <i
-            className={`bx ${isType ? "bx-show" : hideIcon} ${
-              styles.showHidePw
-            }`}
-            onClick={handleChangeType}
-          ></i> */}
           <i className={styles.showHidePw} onClick={handleChangeType}>
             {isType ? hideIcon : <BiShow />}
           </i>
-          {/* <i className={`bx ${icon} ${styles.icon}`}></i> */}
           <i className={styles.icon}>{icon}</i>
         </>
       );
@@ -71,16 +69,13 @@ export default function UserInfoInput({
           autoComplete={autoComplete}
           required
         />
-        {hideIcon ? (
-          chooseIcon()
-        ) : (
-          // <i className={`bx ${icon} ${styles.icon}`}></i>
-          <i className={styles.icon}>{icon}</i>
-        )}
+        {hideIcon ? chooseIcon() : <i className={styles.icon}>{icon}</i>}
       </div>
-      {error !== "" && (
+      {error && (
         <span className={styles.errorMsg}>
-          <i className="bx bx-error-circle"></i>
+          <i>
+            <MdErrorOutline />
+          </i>
           {error}
         </span>
       )}

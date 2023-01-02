@@ -37,8 +37,7 @@ export default function Registration() {
           name={"name"}
           type={"text"}
           placeholder={"Enter your name"}
-          icon={<FiUser />}
-          error={""}
+          icon={<FiUser />} 
           inputs={inputs}
           setInputs={setInputs}
         />
@@ -46,8 +45,7 @@ export default function Registration() {
           name={"email"}
           type={"text"}
           placeholder={"Enter your email"}
-          icon={<HiOutlineMail />}
-          error={""}
+          icon={<HiOutlineMail />} 
           inputs={inputs}
           setInputs={setInputs}
         />
@@ -56,8 +54,7 @@ export default function Registration() {
           type={"password"}
           placeholder={"Create a password"}
           icon={<FiLock />}
-          hideIcon={<GrFormViewHide />}
-          error={""}
+          hideIcon={<GrFormViewHide />} 
           inputs={inputs}
           setInputs={setInputs}
           autoComplete={"off"}
@@ -67,8 +64,7 @@ export default function Registration() {
           type={"password"}
           placeholder={"Confirm a password"}
           icon={<FiLock />}
-          hideIcon={<GrFormViewHide />}
-          error={"Passwords does not match"}
+          hideIcon={<GrFormViewHide />} 
           inputs={inputs}
           setInputs={setInputs}
           autoComplete={"off"}

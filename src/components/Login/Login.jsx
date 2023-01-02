@@ -17,8 +17,7 @@ export default function Login() {
     email: "",
     password: "",
   });
-  const [errorMsg, setErrorMsg] = useState("");
-  const [satusMsg, setSsatuseMsg] = useState("");
+  const [satusMsg, setSatuseMsg] = useState("");
 
   const onSubmitAccount = async (e) => {
     e.preventDefault();
@@ -45,7 +44,7 @@ export default function Login() {
 
   return (
     <div className={`${styles.form} ${styles.login}`}>
-      {satusMsg !== "" && <Alert msg={satusMsg} setMsg={setSsatuseMsg} />}
+      {satusMsg !== "" && <Alert msg={satusMsg} setMsg={setSatuseMsg} />}
       <p className={styles.title}> Login </p>
       <form onSubmit={onSubmitAccount}>
         <UserInfoInput
@@ -53,8 +52,6 @@ export default function Login() {
           type={"text"}
           placeholder={"Enter your email"}
           icon={<HiOutlineMail />}
-          setErrorMsg={setErrorMsg}
-          error={errorMsg}
           inputs={account}
           setInputs={setAccount}
         />
@@ -65,7 +62,6 @@ export default function Login() {
           placeholder={"Enter your Password"}
           icon={<FiLock />}
           hideIcon={<GrFormViewHide />}
-          error={errorMsg}
           inputs={account}
           setInputs={setAccount}
           autoComplete={"off"}
