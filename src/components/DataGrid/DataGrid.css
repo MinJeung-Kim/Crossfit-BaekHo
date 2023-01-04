@@ -1,0 +1,25 @@
+.p-datatable-wrapper {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.p-datatable-wrapper::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+  background-color: #aaa;
+}
+
+.p-datatable-wrapper::-webkit-scrollbar-thumb {
+  background: #5c5b5f;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px -5px rgb(0 0 0 / 10%);
+}
+
+.p-paginator {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+  background: #c8d5e1;
+}
