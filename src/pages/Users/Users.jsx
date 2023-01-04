@@ -7,7 +7,7 @@ export default function Users() {
   return (
     <article className={styles.users}>
       <DataGrid />
-      <Pagination/>
+      {/* <Pagination/> */}
     </article>
   )
 }

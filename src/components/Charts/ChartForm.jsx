@@ -1,6 +1,4 @@
-import styles from "./ChartForm.module.css";
-import BarChart from "./Chart/BarChart";
-import PieChart from "./Chart/PieChart";
+import styles from "./ChartForm.module.css"; 
 import Charts from "./Chart/Charts";
 
 export default function ChartForm() {

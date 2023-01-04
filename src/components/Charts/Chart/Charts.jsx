@@ -12,16 +12,14 @@ export default function Charts({ type }) {
     <Chart
       type={type}
       data={type === "polarArea" ? PieData : BarData}
-      options={type === "polarArea" ? PieOptions : BarOptions} 
+      options={type === "polarArea" ? PieOptions : BarOptions}
       style={
-        type === "polarArea"
-          ? { height: "400px", display: "flex", justifyContent: "center" }
-          : {
-              width: "100%",
-              display: "flex",
-              justifyContent: "center",
-            }
+        type === "polarArea" && {
+          height: "450px",
+          display: "flex",
+          justifyContent: "center",
+        }
       }
     />
   );
-}
+} 
