@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { selectList } from "../../util/selectBoxData";
 import styles from "./SearchButton.module.css";
 
@@ -21,6 +22,7 @@ export default function SearchButton() {
         <div className={styles.dropdown}>
           <div className={styles.defaultOption} onClick={handleToggle}>
             {selected}
+            {isActive ? <IoIosArrowDown /> : <IoIosArrowUp />}
           </div>
           <ul className={`${styles.ul}  ${isActive ? styles.active : ""}`}>
             {selectList.map(({ id, name }) => {

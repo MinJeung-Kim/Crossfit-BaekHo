@@ -11,7 +11,9 @@ export default function SearchHeader({ isActive, setIsActive }) {
   };
 
   return (
-    <header className={styles.home_section}>
+    <header
+      className={`${styles.home_section}  ${isActive ? styles.active : ""}`}
+    >
       <nav>
         <div className={styles.sidebar_button}>
           <i onClick={handleToggle}>

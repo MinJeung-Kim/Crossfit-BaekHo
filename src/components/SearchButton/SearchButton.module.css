@@ -22,17 +22,22 @@
 }
 
 .defaultOption {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   width: 125px;
   height: 100%;
   text-align: center;
   cursor: pointer;
-  border-right: 2px solid rgb(168, 168, 168);
+  border-right: 2px solid rgb(203 207 212);
   color: rgb(70, 70, 70);
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+}
+
+.defaultOption svg {
+  color: rgb(123 127 135);
 }
 
 .ul {
@@ -40,7 +45,7 @@
   border-radius: 5px;
   top: 45px;
   background: #fff;
-  width: 150px;
+  width: 125px;
   text-align: center;
   box-shadow: 0 10px 10px rgb(0 0 0 / 10%);
   display: none;
@@ -101,8 +106,23 @@
   position: absolute;
   top: 25%;
   right: 20px;
-  width: 20px;
-  height: 20px;
-  /* line-height: 60px;  */
+  width: 22px;
+  height: 22px;
+  color: #2697ff;
   cursor: pointer;
+}
+
+@media (max-width: 658px) {
+  .wrapper {
+    width: 30%;
+  }
+  .defaultOption {
+    width: 7rem;
+  }
+  .input,
+  .searchField {
+    width: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
 }

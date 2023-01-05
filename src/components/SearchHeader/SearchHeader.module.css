@@ -1,9 +1,13 @@
 .home_section {
   background: var(--color-bg);
-  /* position: absolute; */
-  width: 100%;
+  position: fixed;
+  width: calc(100% - 260px);
   z-index: 999;
   margin-bottom: 15px;
+}
+
+.home_section.active {
+  width: 100%;
 }
 
 .home_section nav {
@@ -66,6 +70,9 @@
 }
 
 @media (max-width: 1216px) {
+  .home_section {
+    width: 100%;
+  }
   .sidebar_button i {
     display: none;
   }
