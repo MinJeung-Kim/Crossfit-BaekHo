@@ -1,0 +1,8 @@
+@media (max-width: 658px) {
+  .p-button-label {
+    display: none;
+  }
+  .p-button .p-button-icon-left {
+    margin-right: 0;
+  }
+}

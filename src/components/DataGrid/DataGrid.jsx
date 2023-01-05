@@ -4,6 +4,7 @@ import "primereact/resources/primereact.css";
 import "primeflex/primeflex.css";
 
 import React, { useState, useEffect } from "react";
+import { Avatar } from "primereact/avatar";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { CustomerService } from "../../api/UsersApi/customerService";
@@ -14,6 +15,7 @@ import { dateEditor } from "../../util/Inputs/dateInput";
 import { textEditor } from "../../util/Inputs/textInput";
 import { balanceTemplate, priceEditor } from "../../util/Inputs/numberInput";
 import { columns } from "../../util/dataGridData";
+import Buttons from "../common/Buttons/Buttons";
 
 export default function DataGrid() {
   const [customers, setCustomers] = useState([]);
@@ -66,13 +68,30 @@ export default function DataGrid() {
     }
   };
 
+  const representativeBodyTemplate = (rowData) => {
+    return (
+      <>
+        <Avatar
+          image={`images/avatar/${rowData.representative.image}`}
+          className="mr-2"
+          shape="circle"
+        />
+        <span className="image-text">{rowData.representative.name}</span>
+      </>
+    );
+  };
+
   const dynamicColumns = columns.map(({ field, header }, i) => {
     return (
       <Column
         key={i}
         field={field}
         header={header}
-        body={field === "balance" && balanceTemplate}
+        body={
+          field === "balance"
+            ? balanceTemplate
+            : field === "representative.name" && representativeBodyTemplate
+        }
         editor={(options) => handleEditorType(options)}
         style={
           field === "id"
@@ -97,6 +116,7 @@ export default function DataGrid() {
 
   return (
     <section className={styles.dataGrid}>
+      <Buttons customers={customers} setCustomers={setCustomers} selectedCustomers={selectedCustomers} setSelectedCustomers={setSelectedCustomers}/>
       <DataTable
         value={customers}
         scrollable

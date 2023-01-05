@@ -1,13 +1,13 @@
 import React from 'react'
-import DataGrid from '../../components/DataGrid/DataGrid'
-import Pagination from '../../components/Pagination/Pagination'
+import DataGrid from '../../components/DataGrid/DataGrid' 
+import SearchButton from '../../components/SearchButton/SearchButton';
 import styles from './Users.module.css'
 
 export default function Users() {
   return (
     <article className={styles.users}>
-      <DataGrid />
-      {/* <Pagination/> */}
+      <SearchButton />
+      <DataGrid /> 
     </article>
-  )
+  );
 }
