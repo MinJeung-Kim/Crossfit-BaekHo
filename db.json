@@ -6,6 +6,7 @@
       "author": "typicode"
     }
   ],
+
   "comments": [
     {
       "id": 1,
@@ -13,9 +14,11 @@
       "postId": 1
     }
   ],
+
   "profile": {
     "name": "typicode"
   },
+
   "users": [
     {
       "email": "beakho@test.com",
@@ -34,6 +37,26 @@
       "password": "$2a$10$nOvinfIQ7oz6KGKcQ7tF..F8k5qgDU87DnrHPQuHgSW2AEQRDmtrO",
       "name": "qqq",
       "id": 3
+    }
+  ],
+
+  "board": [
+    {
+      "registrationDate": "2015-09-13",
+      "upDate": "2015-09-13",
+      "desc": "취미로 합니다.",
+      "status": "일반",
+      "locker": "Y",
+      "periodMonth": 3,
+      "job": "학생",
+      "email": "qqq@qqq.qqq",
+      "age": 32,
+      "user": {
+        "name": "test",
+        "image": null
+      },
+      "id": 1,
+      "totalPrice": 50
     }
   ]
 }

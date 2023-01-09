@@ -16,6 +16,10 @@ import { textEditor } from "../../util/Inputs/textInput";
 import { balanceTemplate, priceEditor } from "../../util/Inputs/numberInput";
 import { columns } from "../../util/dataGridData";
 import Buttons from "../common/Buttons/Buttons";
+import {
+  statusBodyTemplate,
+  statusEditor,
+} from "../../util/Inputs/selectInput";
 
 export default function DataGrid() {
   const [customers, setCustomers] = useState([]);
@@ -59,24 +63,39 @@ export default function DataGrid() {
 
   const handleEditorType = (options) => {
     switch (options.field) {
-      case "date":
+      case "registrationDate":
         return dateEditor(options);
-      case "balance":
+      case "totalPrice":
         return priceEditor(options);
+      case "locker":
+        return statusEditor(options);
       default:
         return textEditor(options);
     }
+  };
+
+  const handleBodyType = (field) => {
+    console.log( field); 
+    Object.keys(field).filter((item) => {
+      if (item === "totalPrice") {
+        return balanceTemplate;
+      } else if (item === "user") {
+        return representativeBodyTemplate;
+      } else if (item === "locker") {
+        return statusBodyTemplate;
+      }
+    });
   };
 
   const representativeBodyTemplate = (rowData) => {
     return (
       <>
         <Avatar
-          image={`images/avatar/${rowData.representative.image}`}
+          image={`images/avatar/${rowData.user.image}`}
           className="mr-2"
           shape="circle"
         />
-        <span className="image-text">{rowData.representative.name}</span>
+        <span className="image-text">{rowData.user.name}</span>
       </>
     );
   };
@@ -88,10 +107,13 @@ export default function DataGrid() {
         field={field}
         header={header}
         body={
-          field === "balance"
+          field === "totalPrice"
             ? balanceTemplate
-            : field === "representative.name" && representativeBodyTemplate
+            : field === "user.name"
+            ? representativeBodyTemplate
+            : field === "totalPrice" && statusBodyTemplate
         }
+        // body={(field) => handleBodyType(field)}
         editor={(options) => handleEditorType(options)}
         style={
           field === "id"
@@ -116,7 +138,12 @@ export default function DataGrid() {
 
   return (
     <section className={styles.dataGrid}>
-      <Buttons customers={customers} setCustomers={setCustomers} selectedCustomers={selectedCustomers} setSelectedCustomers={setSelectedCustomers}/>
+      <Buttons
+        customers={customers}
+        setCustomers={setCustomers}
+        selectedCustomers={selectedCustomers}
+        setSelectedCustomers={setSelectedCustomers}
+      />
       <DataTable
         value={customers}
         scrollable

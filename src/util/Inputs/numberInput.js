@@ -1,7 +1,9 @@
 import { InputNumber } from "primereact/inputnumber";
 
-export const balanceTemplate = (rowData) => {
-  return <span className="font-bold">{formatCurrency(rowData.balance)}</span>;
+export const balanceTemplate = (rowData) => {  
+  return (
+    <span className="font-bold">{formatCurrency(rowData.totalPrice)}</span>
+  );
 };
 
 const formatCurrency = (value) => {

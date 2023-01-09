@@ -4,7 +4,7 @@ import "./index.css";
 import "./styles/App.global.css";
 import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { CookiesProvider } from 'react-cookie';
+import { CookiesProvider } from "react-cookie";
 import reportWebVitals from "./reportWebVitals";
 import NotFound from "./pages/NotFound";
 import LoginForm from "./pages/LoginForm/LoginForm";
@@ -12,6 +12,8 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import Users from "./pages/Users/Users";
 import { AuthContextProvider } from "./context/AuthContext";
 import { ModeProvider } from "./context/ModeContext";
+import { Provider } from "react-redux";
+import store from "./store";
 
 const router = createBrowserRouter([
   {
@@ -36,13 +38,15 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <CookiesProvider>
-      <AuthContextProvider>
-        <ModeProvider>
-          <RouterProvider router={router} />
-        </ModeProvider>
-      </AuthContextProvider> 
-    </CookiesProvider>
+    <Provider store={store}>
+      <CookiesProvider>
+        <AuthContextProvider>
+          <ModeProvider>
+            <RouterProvider router={router} />
+          </ModeProvider>
+        </AuthContextProvider>
+      </CookiesProvider>
+    </Provider>
   </React.StrictMode>
 );
 

@@ -1,4 +1,6 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { articleActions } from "../../../reducers/slice/articleSlice";
 import { Dialog } from "primereact/dialog";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
@@ -19,6 +21,8 @@ export default function Modal({
   productDialog,
   setProductDialog,
 }) {
+  const dispatch = useDispatch();
+
   const hideDialog = () => {
     setSubmitted(false);
     setProductDialog(false);
@@ -77,8 +81,11 @@ export default function Modal({
       setCustomers(_products);
       setProductDialog(false);
       setProduct(emptyProduct);
+      console.log("emptyProduct : ", emptyProduct);
+      dispatch(articleActions.registerArticle(_products));
     }
   };
+
   const onInputChange = (e, name) => {
     const val = (e.target && e.target.value) || "";
     let _product = { ...product };

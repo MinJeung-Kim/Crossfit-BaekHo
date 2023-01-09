@@ -37,8 +37,8 @@ export class CustomerService {
   }
 
   getCustomersMedium() {
-    return fetch("mocDatas/users.json")
+    return fetch("http://localhost:8000/board")
       .then((res) => res.json())
-      .then((d) => d.data);
+      .then((data) => data);
   }
 }

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Button } from "primereact/button"; 
+import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
 
 import styles from "./Buttons.module.css";
@@ -14,16 +14,21 @@ export default function Buttons({
   setSelectedCustomers,
 }) {
   let emptyProduct = {
+    desc: "",
+    status: "",
+    locker: "n",
+    periodMonth: 1,
+    job: "",
+    email: "",
+    age: 0,
+    user: {
+      name: "",
+      image: null,
+    }, 
     id: null,
-    name: "",
-    image: null,
-    description: "",
-    category: null,
-    price: 0,
-    quantity: 0,
-    rating: 0,
-    inventoryStatus: "INSTOCK",
+    totalPrice: 0,
   };
+
   const toast = useRef(null);
   const [deleteProductsDialog, setDeleteProductsDialog] = useState(false);
 
